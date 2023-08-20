@@ -67,7 +67,11 @@ This function should only modify configuration layer settings."
      docker
      (org :variables
           org-enable-roam-support t
-          org-enable-roam-ui t)
+          org-enable-roam-ui t
+          org-capture-templates
+          '(("a" "Activity log" entry (file+datetree "~/org-roam/activity_log.org")
+             "* %?\n"))
+     )
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
