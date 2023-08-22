@@ -68,10 +68,11 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-roam-support t
           org-enable-roam-ui t
+          org-todo-keywords '((sequence "TODO" "BACKLOG" "|" "CANCELLED" "DONE"))
           org-capture-templates
           '(("a" "Activity log" entry (file+datetree "~/org-roam/activity_log.org")
              "* %?\n")
-            ("t" "Todo" entry (file+datetree "~/org-roam/journal.org")
+            ("t" "Todo" entry (file+headline "~/org-roam/journal.org" "Inbox")
              "* TODO %?\n"))
      )
      ;; (shell :variables
