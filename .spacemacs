@@ -286,10 +286,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Fira Code"
-                               :size 14.0
-                               :weight normal
-                               :width normal)
+   dotspacemacs-default-font '("Fira Code" :size 20 :weight normal :width normal :powerline-scale 1.1)
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -618,5 +615,11 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 )
