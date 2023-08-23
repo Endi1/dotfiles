@@ -70,11 +70,15 @@ This function should only modify configuration layer settings."
           org-enable-roam-ui t
           org-todo-keywords '((sequence "TODO" "BACKLOG" "|" "CANCELLED" "DONE"))
           org-agenda-todo-ignore-scheduled 'all
+          org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil))
+          org-agenda-files '((sequence "~/org-roam/journal.org"))
           org-capture-templates
           '(("a" "Activity log" entry (file+datetree "~/org-roam/activity_log.org")
              "* %?\n")
             ("t" "Todo" entry (file+headline "~/org-roam/journal.org" "Inbox")
-             "* TODO %?\n"))
+             "* TODO %?\n")
+            ("i" "Note" entry (file+headline "~/org-roam/journal.org" "Inbox")
+             "* %?\n"))
           )
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -607,28 +611,6 @@ before packages are loaded."
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (fringe-mode '(0 . 0))
   (setq kaolin-ocean-alt-bg)
-  (setq org-agenda-custom-commands '(("o" occur "+SCHEDULED={.}/!")))
   )
 
 
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(org-agenda-files '("~/org-roam/journal.org")))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
