@@ -69,11 +69,21 @@ This function should only modify configuration layer settings."
           org-enable-roam-support t
           org-enable-roam-ui t
           org-todo-keywords '((sequence "TODO" "BACKLOG" "|" "CANCELLED" "DONE"))
+          org-agenda-todo-ignore-scheduled 'all
           org-capture-templates
           '(("a" "Activity log" entry (file+datetree "~/org-roam/activity_log.org")
              "* %?\n")
             ("t" "Todo" entry (file+headline "~/org-roam/journal.org" "Inbox")
              "* TODO %?\n"))
+org-agenda-custom-commands
+      `(
+        ("x"
+         "Unscheduled tasks"
+         
+         ;; settings for the above composite custom command
+         ((org-agenda-todo-ignore-scheduled 'future)
+          (org-agenda-tags-todo-honor-ignore-options t)))
+)
      )
      ;; (shell :variables
      ;;        shell-default-height 30
