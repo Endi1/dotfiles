@@ -68,6 +68,7 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-roam-support t
           org-enable-roam-ui t
+          
           org-todo-keywords '((sequence "TODO" "BACKLOG" "PROJECT" "|" "CANCELLED" "DONE"))
           org-agenda-todo-ignore-scheduled 'all
           org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil) ("p" "Projects" todo "PROJECT" ))
@@ -610,6 +611,7 @@ before packages are loaded."
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (fringe-mode '(0 . 0))
   (setq kaolin-ocean-alt-bg)
+  (org-roam-db-autosync-mode t)
   )
 
 
@@ -623,7 +625,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/org-roam/journal.org")))
+ '(org-agenda-files '("~/Notes/notebook/journal.org"))
+ '(org-roam-directory "/home/endi/Notes/org-roam"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
