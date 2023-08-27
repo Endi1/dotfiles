@@ -626,6 +626,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files '("~/Notes/notebook/journal.org"))
+ '(org-roam-db-update-on-save t)
  '(org-roam-directory "/home/endi/Notes/org-roam"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
