@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    '(yaml
      sql
      scala
+     html
      (typescript :variables
                  typescript-backend 'lsp
                  typescript-fmt-on-save t
