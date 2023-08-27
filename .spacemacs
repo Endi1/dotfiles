@@ -73,11 +73,11 @@ This function should only modify configuration layer settings."
           org-agenda-todo-ignore-scheduled 'all
           org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil) ("p" "Projects" todo "PROJECT" ))
           org-capture-templates
-          '(("a" "Activity log" entry (file+datetree "~/org-roam/activity_log.org")
+          '(("a" "Activity log" entry (file+datetree "~/Notes/notebook/activity_log.org")
              "* %?\n")
-            ("t" "Todo" entry (file+headline "~/org-roam/journal.org" "Inbox")
+            ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
              "* TODO %?\n")
-            ("i" "Note" entry (file+headline "~/org-roam/journal.org" "Inbox")
+            ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
              "* %?\n"))
           )
      ;; (shell :variables
