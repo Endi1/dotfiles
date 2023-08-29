@@ -41,6 +41,7 @@ This function should only modify configuration layer settings."
                  typescript-fmt-on-save t
                  typescript-fmt-tool 'prettier)
      haskell
+     multiple-cursors
      (yaml :variables yaml-enable-lsp t)
      csv
      (javascript :variables javascript-backend 'lsp)
