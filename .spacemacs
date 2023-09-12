@@ -605,7 +605,7 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "C-/") #'evil-commentary)
   (define-key evil-normal-state-map (kbd "SPC n i") #'org-roam-node-insert)
   (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
-  (define-key evil-normal-state-map (kbd "gd") #'spacemacs/jump-to-definition-other-window)
+  (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
   (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
   (global-undo-tree-mode nil)
   (setq evil-undo-system 'undo-redo)
