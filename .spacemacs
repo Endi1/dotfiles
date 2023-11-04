@@ -89,6 +89,8 @@ This function should only modify configuration layer settings."
      ;; syntax-checking
      version-control
      treemacs
+     (auto-completion :variables
+                      auto-completion-idle-delay 0.0)
      )
 
 
