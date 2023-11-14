@@ -105,7 +105,7 @@ This function should only modify configuration layer settings."
                                       (copilot :location (recipe
                                                           :fetcher github
                                                           :repo "zerolfx/copilot.el"
-                                                          :files ("*.el" "dist")))
+                                                          :files ("*.el" "dist" "*.py")))
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -601,6 +601,17 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (with-eval-after-load 'company
+    ;; disable inline previews
+    (delq 'company-preview-if-just-one-frontend company-frontends))
+
+
+  (with-eval-after-load 'copilot
+    (define-key copilot-completion-map (kbd "M-<right>") 'copilot-accept-completion-by-line)
+    (define-key copilot-completion-map (kbd "M-<return>") 'copilot-accept-completion)
+    (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+
   (global-goto-address-mode)
   (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
   (define-key evil-normal-state-map (kbd "gd") #'lsp-find-references)
@@ -617,15 +628,7 @@ before packages are loaded."
   (setq kaolin-ocean-alt-bg)
   (org-roam-db-autosync-mode t)
   (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
-  (with-eval-after-load 'company
-    ;; disable inline previews
-    (delq 'company-preview-if-just-one-frontend company-frontends))
 
-  (with-eval-after-load 'copilot
-    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-    (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-    (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
-    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
 
   (add-hook 'prog-mode-hook 'copilot-mode)
   )
