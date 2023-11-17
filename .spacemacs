@@ -34,6 +34,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(yaml
      tabs
+     (tree-sitter :variables
+                  tree-sitter-syntax-enable t)
      sql
      (shell :variables
             shell-default-shell 'vterm
@@ -623,17 +625,17 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
   (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
   (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
-  (global-undo-tree-mode nil)
   (setq evil-undo-system 'undo-redo)
   (evil-set-undo-system 'undo-redo)
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (add-hook 'prog-mode-hook 'undo-tree-mode)
+  (add-hook 'prog-mode-hook 'copilot-mode)
   (fringe-mode '(0 . 0))
   (setq kaolin-ocean-alt-bg)
   (org-roam-db-autosync-mode t)
   (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
 
 
-  (add-hook 'prog-mode-hook 'copilot-mode)
   )
 
 
@@ -654,7 +656,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-roam-db-update-on-save t)
  '(org-roam-directory "/home/endi/Notes/org-roam")
  '(package-selected-packages
-   '(esh-help eshell-prompt-extras eshell-z multi-term multi-vterm shell-pop terminal-here vterm xterm-color copilot org-hyperscheduler org-timeblock persist org-ql peg ov org-super-agenda ts seq ob-mermaid centaur-tabs yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toml-mode toc-org term-cursor tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smex smeargle slim-mode scss-mode sbt-mode sass-mode rust-mode ron-mode restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js popwin poetry pippel pipenv pip-requirements pcre2el password-generator paradox overseer orgit-forge org-superstar org-roam-ui org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file npm-mode nose nodejs-repl nameless mwim mvn multi-line mmm-mode maven-test-mode markdown-toc macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-metals lsp-java lsp-ivy lsp-haskell lorem-ipsum livid-mode live-py-mode link-hint kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy inspector info+ indent-guide importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides hide-comnt help-fns+ helm-make haskell-snippets groovy-mode groovy-imports google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe gh-md fuzzy flycheck-rust flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emmet-mode elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode counsel-projectile counsel-css company-web company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode cargo browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link ac-ispell))
+   '(ts-fold tree-sitter-langs tree-sitter tsc esh-help eshell-prompt-extras eshell-z multi-term multi-vterm shell-pop terminal-here vterm xterm-color copilot org-hyperscheduler org-timeblock persist org-ql peg ov org-super-agenda ts seq ob-mermaid centaur-tabs yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify volatile-highlights vim-powerline vi-tilde-fringe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toml-mode toc-org term-cursor tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smex smeargle slim-mode scss-mode sbt-mode sass-mode rust-mode ron-mode restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js popwin poetry pippel pipenv pip-requirements pcre2el password-generator paradox overseer orgit-forge org-superstar org-roam-ui org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink open-junk-file npm-mode nose nodejs-repl nameless mwim mvn multi-line mmm-mode maven-test-mode markdown-toc macrostep lsp-ui lsp-python-ms lsp-pyright lsp-origami lsp-metals lsp-java lsp-ivy lsp-haskell lorem-ipsum livid-mode live-py-mode link-hint kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy inspector info+ indent-guide importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides hide-comnt help-fns+ helm-make haskell-snippets groovy-mode groovy-imports google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe gh-md fuzzy flycheck-rust flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr emmet-mode elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode counsel-projectile counsel-css company-web company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode cargo browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link ac-ispell))
  '(whitespace-style
    '(face trailing tabs lines missing-newline-at-eof empty indentation space-after-tab space-before-tab space-mark tab-mark)))
 (custom-set-faces
