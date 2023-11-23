@@ -39,6 +39,7 @@ This function should only modify configuration layer settings."
      (shell :variables
             shell-default-shell 'vterm
             shell-default-position 'right
+            shell-default-width 100
             multi-term-program "/bin/zsh")
      html
      (typescript :variables
