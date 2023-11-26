@@ -68,7 +68,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      ivy
-     lsp
+     ;; lsp
      markdown
      multiple-cursors
      mermaid
@@ -90,8 +90,8 @@ This function should only modify configuration layer settings."
           )
      version-control
      treemacs
-     (auto-completion :variables
-                      auto-completion-idle-delay 0.0)
+     ;; (auto-completion :variables
+     ;;                  auto-completion-idle-delay 0.0)
      )
 
 
