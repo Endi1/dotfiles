@@ -284,7 +284,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(kaolin-ocean)
+   dotspacemacs-themes '(kaolin-aurora)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -302,7 +302,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Fira Code" :size 20 :weight normal :width normal :powerline-scale 1.1)
+   dotspacemacs-default-font '("JetBrains Mono" :size 20 :weight normal :width normal :powerline-scale 1.1)
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -631,7 +631,7 @@ before packages are loaded."
   (add-hook 'prog-mode-hook 'undo-tree-mode)
   (add-hook 'prog-mode-hook 'copilot-mode)
   (fringe-mode '(0 . 0))
-  (setq kaolin-ocean-alt-bg)
+  ;; (setq kaolin-ocean-alt-bg)
   (org-roam-db-autosync-mode t)
   (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
 
@@ -649,6 +649,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("3c7a784b90f7abebb213869a21e84da462c26a1fda7e5bd0ffebf6ba12dbd041" default))
  '(highlight-indent-guides-auto-odd-face-perc 25)
  '(lsp-file-watch-threshold 5000)
  '(lsp-headerline-breadcrumb-enable nil)
