@@ -77,7 +77,7 @@ This function should only modify configuration layer settings."
           org-enable-roam-support t
           org-enable-roam-ui t
           
-          org-todo-keywords '((sequence "TODO" "BACKLOG" "PROJECT" "|" "CANCELLED" "DONE"))
+          org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELLED"))
           org-agenda-todo-ignore-scheduled 'all
           org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil) ("p" "Projects" todo "PROJECT" ))
           org-capture-templates
