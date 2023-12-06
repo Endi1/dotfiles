@@ -76,7 +76,6 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-roam-support t
           org-enable-roam-ui t
-          
           org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELLED"))
           org-agenda-todo-ignore-scheduled 'all
           org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil) ("p" "Projects" todo "PROJECT" ))
@@ -86,7 +85,10 @@ This function should only modify configuration layer settings."
             ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
              "* TODO %?\n")
             ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
-             "* %?\n"))
+             "* %?\n")
+            ("b" "Bookmark" entry (file+headline "~/Notes/notebook/bookmarks.org" "Inbox")
+             "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+            )
           )
      version-control
      treemacs
@@ -656,7 +658,7 @@ This function is called at the very end of Spacemacs initialization."
  '(highlight-indent-guides-auto-odd-face-perc 25)
  '(lsp-file-watch-threshold 5000)
  '(lsp-headerline-breadcrumb-enable nil)
- '(org-agenda-files '("~/Notes/notebook/journal.org"))
+ '(org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/bookmarks.org"))
  '(org-roam-db-update-on-save t)
  '(org-roam-directory "/home/endi/Notes/org-roam")
  '(package-selected-packages
