@@ -637,7 +637,6 @@ before packages are loaded."
   (add-hook 'prog-mode-hook 'undo-tree-mode)
   (add-hook 'prog-mode-hook 'copilot-mode)
   (fringe-mode '(0 . 0))
-  ;; (setq kaolin-ocean-alt-bg)
   (org-roam-db-autosync-mode t)
   (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
   (add-hook 'python-mode-hook #'flymake-ruff-load)
