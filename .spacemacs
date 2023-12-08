@@ -639,6 +639,7 @@ before packages are loaded."
   ;; (setq kaolin-ocean-alt-bg)
   (org-roam-db-autosync-mode t)
   (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
+  (add-hook 'python-mode-hook 'flymake-mode)
   (add-hook 'python-mode-hook #'flymake-ruff-load)
 
 
