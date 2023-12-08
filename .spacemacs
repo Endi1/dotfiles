@@ -611,6 +611,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (add-hook 'python-mode-hook 'flymake-mode)
   (with-eval-after-load 'company
     ;; disable inline previews
     (delq 'company-preview-if-just-one-frontend company-frontends))
@@ -639,10 +640,7 @@ before packages are loaded."
   ;; (setq kaolin-ocean-alt-bg)
   (org-roam-db-autosync-mode t)
   (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
-  (add-hook 'python-mode-hook 'flymake-mode)
   (add-hook 'python-mode-hook #'flymake-ruff-load)
-
-
   )
 
 
