@@ -25,7 +25,7 @@
      ;; If non-nil then Spacemacs will ask for confirmation before installing
      ;; a layer lazily. (default t)
      dotspacemacs-ask-for-lazy-installation t
-     
+
      ;; List of additional paths where to look for configuration layers.
      ;; Paths must have a trailing slash (i.e. "~/.mycontribs/")
      dotspacemacs-configuration-layer-path '()
@@ -80,7 +80,10 @@
             org-enable-roam-support t
             org-enable-roam-ui t
             org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELLED"))
+            org-agenda-files '("~/Notes/notebook/journal.org")
+            org-agenda-todo-ignore-with-date t
             org-agenda-todo-ignore-scheduled 'all
+            org-todo-dependencies-strategy 'semiauto
             org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil) ("p" "Projects" todo "PROJECT" ))
             org-capture-templates
             '(("a" "Activity log" entry (file+datetree "~/Notes/notebook/activity_log.org")
@@ -136,6 +139,10 @@
      ;; (default is `used-only')
      dotspacemacs-install-packages 'used-only))
 #+end_src
+
+#+RESULTS:
+: dotspacemacs/layers
+
 ** Initialization function
 #+begin_src elisp :tangle ".spacemacs"
 (defun dotspacemacs/init ()
@@ -614,40 +621,43 @@ dump."
 #+end_src
 *** User config
 #+begin_src elisp :tangle ".spacemacs"
-(defun dotspacemacs/user-config ()
-  "Configuration for user code:
-This function is called at the very end of Spacemacs startup, after layer
-configuration.
-Put your configuration code here, except for variables that should be set
-before packages are loaded."
-  (add-hook 'python-mode-hook 'flymake-mode)
-  (with-eval-after-load 'company
-    ;; disable inline previews
-    (delq 'company-preview-if-just-one-frontend company-frontends))
+  (defun dotspacemacs/user-config ()
+    "Configuration for user code:
+  This function is called at the very end of Spacemacs startup, after layer
+  configuration.
+  Put your configuration code here, except for variables that should be set
+  before packages are loaded."
+    (add-hook 'python-mode-hook 'flymake-mode)
+    (with-eval-after-load 'company
+      ;; disable inline previews
+      (delq 'company-preview-if-just-one-frontend company-frontends))
 
 
-  (with-eval-after-load 'copilot
-    (define-key copilot-completion-map (kbd "M-<right>") 'copilot-accept-completion-by-line)
-    (define-key copilot-completion-map (kbd "M-<return>") 'copilot-accept-completion)
-    (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
-    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+    (with-eval-after-load 'copilot
+      (define-key copilot-completion-map (kbd "M-<right>") 'copilot-accept-completion-by-line)
+      (define-key copilot-completion-map (kbd "M-<return>") 'copilot-accept-completion)
+      (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+      (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
 
-  (global-goto-address-mode)
-  (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
-  (define-key evil-normal-state-map (kbd "gd") #'lsp-find-references)
-  (define-key evil-normal-state-map (kbd "C-/") #'evil-commentary)
-  (define-key evil-normal-state-map (kbd "SPC n i") #'org-roam-node-insert)
-  (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
-  (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
-  (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
-  (setq evil-undo-system 'undo-redo)
-  (evil-set-undo-system 'undo-redo)
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (add-hook 'prog-mode-hook 'undo-tree-mode)
-  (add-hook 'prog-mode-hook 'copilot-mode)
-  (fringe-mode '(0 . 0))
-  (org-roam-db-autosync-mode t)
-  (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
-  (add-hook 'python-mode-hook #'flymake-ruff-load)
-  )
+    (global-goto-address-mode)
+    (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
+    (define-key evil-normal-state-map (kbd "gd") #'lsp-find-references)
+    (define-key evil-normal-state-map (kbd "C-/") #'evil-commentary)
+    (define-key evil-normal-state-map (kbd "SPC n i") #'org-roam-node-insert)
+    (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
+    (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
+    (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
+    (setq evil-undo-system 'undo-redo)
+    (evil-set-undo-system 'undo-redo)
+    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+    (add-hook 'prog-mode-hook 'undo-tree-mode)
+    (add-hook 'prog-mode-hook 'copilot-mode)
+    (fringe-mode '(0 . 0))
+    (org-roam-db-autosync-mode t)
+    (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
+    (add-hook 'python-mode-hook #'flymake-ruff-load)
+    )
 #+end_src
+
+#+RESULTS:
+: dotspacemacs/user-config
