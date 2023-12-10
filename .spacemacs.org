@@ -122,6 +122,7 @@
                                                             :repo "zerolfx/copilot.el"
                                                             :files ("*.el" "dist" "*.py")))
                                         flymake-ruff
+                                        rustic
                                         )
 
      ;; A list of packages that cannot be updated.
