@@ -124,6 +124,7 @@
                                                             :files ("*.el" "dist" "*.py")))
                                         flymake-ruff
                                         rustic
+                                        fzf
                                         )
 
      ;; A list of packages that cannot be updated.
@@ -647,6 +648,8 @@ dump."
     (define-key evil-normal-state-map (kbd "C-/") #'evil-commentary)
     (define-key evil-normal-state-map (kbd "SPC n i") #'org-roam-node-insert)
     (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
+    (define-key evil-normal-state-map (kbd "SPC f z f") #'fzf-directory)
+    (define-key evil-normal-state-map (kbd "SPC f z p") #'fzf-projectile)
     (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
     (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
     (setq evil-undo-system 'undo-redo)
