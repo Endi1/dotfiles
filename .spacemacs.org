@@ -63,6 +63,7 @@
        ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
        ;; `M-m f e R' (Emacs style) to install them.
        ;; ----------------------------------------------------------------
+       epub
        evil-commentary
        spacemacs-editing
        better-defaults
@@ -93,6 +94,8 @@
                "* TODO %?\n")
               ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
                "* %?\n")
+              ("h" "Highlight" entry (file+headline "~/Notes/notebook/journal.org" "Highlights")
+               "* %U\n%?\n:PROPERTIES:\n:Source: %f\n:END:\n\n" :empty-lines 1)
               ("b" "Bookmark" entry (file+headline "~/Notes/notebook/bookmarks.org" "Inbox")
                "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
               )
