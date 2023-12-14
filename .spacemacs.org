@@ -58,11 +58,6 @@
                python-format-on-save t)
        rust
        vue
-       ;; ----------------------------------------------------------------
-       ;; Example of useful layers you may want to use right away.
-       ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-       ;; `M-m f e R' (Emacs style) to install them.
-       ;; ----------------------------------------------------------------
        epub
        evil-commentary
        spacemacs-editing
@@ -131,9 +126,9 @@
                                         vundo
                                         restclient
                                         vertico-posframe
-                                        ;; doom-modeline
-                                        doom-themes
                                         spacious-padding
+                                        kaolin-themes
+                                        mood-line
     )
 
      ;; A list of packages that cannot be updated.
@@ -313,7 +308,7 @@
      ;; List of themes, the first of the list is loaded when spacemacs starts.
      ;; Press `SPC T n' to cycle to the next theme in the list (works great
      ;; with 2 themes variants, one dark and one light)
-     dotspacemacs-themes '(doom-ayu-dark)
+     dotspacemacs-themes '(kaolin-ocean)
 
      ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
      ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -322,7 +317,7 @@
      ;; refer to the DOCUMENTATION.org for more info on how to create your own
      ;; spaceline theme. Value can be a symbol or list with additional properties.
      ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-     dotspacemacs-mode-line-theme '(spacemacs :separator wave)
+     dotspacemacs-mode-line-theme '(doom :separator wave)
 
      ;; If non-nil the cursor color matches the state color in GUI Emacs.
      ;; (default t)
@@ -611,25 +606,25 @@
 ** User stuff
 
 #+begin_src elisp :tangle ".spacemacs"
-(defun dotspacemacs/user-env ()
-  (spacemacs/load-spacemacs-env)
-)
+    (defun dotspacemacs/user-env ()
+      (spacemacs/load-spacemacs-env)
+    )
 
-(defun dotspacemacs/user-init ()
-  "Initialization for user code:
-This function is called immediately after `dotspacemacs/init', before layer
-configuration.
-It is mostly for variables that should be set before packages are loaded.
-If you are unsure, try setting them in `dotspacemacs/user-config' first."
-)
+    (defun dotspacemacs/user-init ()
+      "Initialization for user code:
+    This function is called immediately after `dotspacemacs/init', before layer
+    configuration.
+    It is mostly for variables that should be set before packages are loaded.
+    If you are unsure, try setting them in `dotspacemacs/user-config' first."
+    )
 
 
-(defun dotspacemacs/user-load ()
-  "Library to load while dumping.
-This function is called only while dumping Spacemacs configuration. You can
-`require' or `load' the libraries of your choice that will be included in the
-dump."
-  )
+    (defun dotspacemacs/user-load ()
+      "Library to load while dumping.
+    This function is called only while dumping Spacemacs configuration. You can
+    `require' or `load' the libraries of your choice that will be included in the
+    dump."
+      )
 #+end_src
 *** User config
 #+begin_src elisp :tangle ".spacemacs"
@@ -639,6 +634,7 @@ dump."
   configuration.
   Put your configuration code here, except for variables that should be set
   before packages are loaded."
+    
     (add-hook 'python-mode-hook 'flymake-mode)
     (with-eval-after-load 'company
       ;; disable inline previews
@@ -662,6 +658,7 @@ dump."
     (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
     (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
     (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
+    (define-key evil-normal-state-map (kbd "SPC g e") #'consult-flymake)
     (define-key evil-normal-state-map (kbd "u") #'vundo)
     (setq evil-undo-system 'undo-redo)
     (evil-set-undo-system 'undo-redo)
