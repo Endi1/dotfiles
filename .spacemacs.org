@@ -132,6 +132,7 @@
                                         vundo
                                         restclient
                                         vertico-posframe
+                                        elfeed-tube
     )
 
      ;; A list of packages that cannot be updated.
