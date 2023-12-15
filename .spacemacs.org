@@ -652,7 +652,6 @@
     (golden-ratio-mode)
     (vertico-posframe-mode)
     (global-goto-address-mode)
-    (define-key evil-normal-state-map (kbd "SPC b l") #'bufler)
     (define-key evil-normal-state-map (kbd "SPC b b") #'bufler-switch-buffer)
     (define-key evil-normal-state-map (kbd "SPC o f") #'org-ql-find-in-agenda)
     (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
