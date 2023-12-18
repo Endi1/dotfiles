@@ -636,7 +636,6 @@
   configuration.
   Put your configuration code here, except for variables that should be set
   before packages are loaded."
-    (add-hook 'python-mode-hook 'flymake-mode)
     (with-eval-after-load 'company
       ;; disable inline previews
       (delq 'company-preview-if-just-one-frontend company-frontends))
@@ -661,7 +660,7 @@
     (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
     (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
     (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
-    (define-key evil-normal-state-map (kbd "SPC g e") #'consult-flymake)
+    (define-key evil-normal-state-map (kbd "SPC g e") #'list-flycheck-errors)
     (define-key evil-normal-state-map (kbd "u") #'vundo)
     (setq evil-undo-system 'undo-redo)
     (evil-set-undo-system 'undo-redo)
