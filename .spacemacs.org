@@ -659,7 +659,7 @@
     (define-key evil-normal-state-map (kbd "SPC n i") #'org-roam-node-insert)
     (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
     (define-key evil-normal-state-map (kbd "gd") #'lsp-find-definition)
-    (define-key evil-normal-state-map (kbd "gf") #'lsp-find-references)
+    (define-key evil-normal-state-map (kbd "gf") #'lsp-ui-peek-find-references)
     (define-key evil-normal-state-map (kbd "SPC g e") #'list-flycheck-errors)
     (define-key evil-normal-state-map (kbd "u") #'vundo)
     (setq evil-undo-system 'undo-redo)
