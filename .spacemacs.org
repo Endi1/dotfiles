@@ -671,6 +671,7 @@
     (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
     (add-hook 'python-mode-hook #'flymake-ruff-load)
     (setq webjump-sites '(("Shortcut" . "https://app.shortcut.com")))
+    
     )
 #+end_src
 
