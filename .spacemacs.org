@@ -662,6 +662,7 @@
     (define-key evil-normal-state-map (kbd "gf") #'lsp-ui-peek-find-references)
     (define-key evil-normal-state-map (kbd "SPC g e") #'list-flycheck-errors)
     (define-key evil-normal-state-map (kbd "u") #'vundo)
+    (define-key evil-normal-state-map (kbd "SPC w j") #'webjump)
     (setq evil-undo-system 'undo-redo)
     (evil-set-undo-system 'undo-redo)
     (add-hook 'prog-mode-hook 'indent-bars-mode)
@@ -669,6 +670,7 @@
     (org-roam-db-autosync-mode t)
     (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
     (add-hook 'python-mode-hook #'flymake-ruff-load)
+    (setq webjump-sites '(("Shortcut" . "https://app.shortcut.com")))
     )
 #+end_src
 
