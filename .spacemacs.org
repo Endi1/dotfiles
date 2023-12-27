@@ -131,7 +131,6 @@
                                         mood-line
                                         org-ql
                                         bufler
-                                        blamer
     )
 
      ;; A list of packages that cannot be updated.
@@ -637,7 +636,6 @@
   configuration.
   Put your configuration code here, except for variables that should be set
   before packages are loaded."
-    (global-blamer-mode 1)
     (with-eval-after-load 'company
       ;; disable inline previews
       (delq 'company-preview-if-just-one-frontend company-frontends))
