@@ -53,6 +53,7 @@
                python-formatter 'black
                python-format-on-save t)
          (typescript :variables
+               typescript-fmt-tool 'prettier
                typescript-fmt-on-save t
          )
        rust
