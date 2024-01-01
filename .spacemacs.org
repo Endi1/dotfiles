@@ -36,7 +36,7 @@
        yaml
        (tree-sitter :variables
                     tree-sitter-syntax-enable t)
-       sql
+         sql
        (shell :variables
               shell-default-shell 'multi-term
               shell-default-position 'bottom
@@ -52,6 +52,9 @@
                python-backend 'lsp python-lsp-server 'pylsp
                python-formatter 'black
                python-format-on-save t)
+         (typescript :variables
+               typescript-fmt-on-save t
+         )
        rust
        epub
        evil-commentary
