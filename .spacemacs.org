@@ -52,10 +52,11 @@
                python-backend 'lsp python-lsp-server 'pylsp
                python-formatter 'black
                python-format-on-save t)
-         (typescript :variables
+       (typescript :variables
                typescript-fmt-tool 'prettier
                typescript-fmt-on-save t
-         )
+       )
+       (vue :variables vue-backend 'lsp)
        rust
        epub
        evil-commentary
