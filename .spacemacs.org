@@ -60,6 +60,7 @@
        rust
        epub
        evil-commentary
+       mastodon
        spacemacs-editing
        better-defaults
        emacs-lisp
@@ -133,6 +134,7 @@
                                         bufler
                                         one
                                         mastodon
+                                        evil-collection
     )
 
      ;; A list of packages that cannot be updated.
