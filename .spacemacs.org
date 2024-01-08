@@ -36,7 +36,7 @@
        yaml
        (tree-sitter :variables
                     tree-sitter-syntax-enable t)
-         sql
+       sql
        (shell :variables
               shell-default-shell 'multi-term
               shell-default-position 'bottom
@@ -132,6 +132,7 @@
                                         org-ql
                                         bufler
                                         one
+                                        mastodon
     )
 
      ;; A list of packages that cannot be updated.
@@ -637,6 +638,8 @@
   configuration.
   Put your configuration code here, except for variables that should be set
   before packages are loaded."
+    (setq mastodon-instance-url "https://fosstodon.org"
+          mastodon-active-user "codepenguin")
     (with-eval-after-load 'company
       ;; disable inline previews
       (delq 'company-preview-if-just-one-frontend company-frontends))
