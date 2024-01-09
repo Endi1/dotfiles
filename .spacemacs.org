@@ -69,6 +69,7 @@
        markdown
        multiple-cursors
        mermaid
+       mastodon
        docker
        (elfeed :variables
                rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
@@ -133,6 +134,7 @@
                                         bufler
                                         one
                                         mastodon
+                                        emojify
     )
 
      ;; A list of packages that cannot be updated.
