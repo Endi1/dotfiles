@@ -60,7 +60,6 @@
        rust
        epub
        evil-commentary
-       mastodon
        spacemacs-editing
        better-defaults
        emacs-lisp
@@ -134,7 +133,6 @@
                                         bufler
                                         one
                                         mastodon
-                                        evil-collection
     )
 
      ;; A list of packages that cannot be updated.
@@ -640,8 +638,6 @@
   configuration.
   Put your configuration code here, except for variables that should be set
   before packages are loaded."
-    (setq mastodon-instance-url "https://fosstodon.org"
-          mastodon-active-user "codepenguin")
     (with-eval-after-load 'company
       ;; disable inline previews
       (delq 'company-preview-if-just-one-frontend company-frontends))
@@ -677,6 +673,8 @@
     (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
     (add-hook 'python-mode-hook #'flymake-ruff-load)
     (setq webjump-sites '(("Shortcut" . "https://app.shortcut.com")))
+    (setq mastodon-instance-url "https://fosstodon.org"
+          mastodon-active-user "codepenguin")
 
     )
 #+end_src
