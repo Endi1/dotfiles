@@ -135,6 +135,7 @@
                                         one
                                         mastodon
                                         emojify
+                                        telega
     )
 
      ;; A list of packages that cannot be updated.
@@ -668,6 +669,9 @@
     (define-key evil-normal-state-map (kbd "u") #'vundo)
     (define-key evil-normal-state-map (kbd "SPC w j") #'webjump)
     (setq evil-undo-system 'undo-redo)
+    (setq telega-use-docker t)
+    (telega-notifications-mode 1)
+    (add-hook 'telega-load-hook 'telega-mode-line-mode)
     (evil-set-undo-system 'undo-redo)
     (add-hook 'prog-mode-hook 'indent-bars-mode)
     (fringe-mode '(0 . 0))
