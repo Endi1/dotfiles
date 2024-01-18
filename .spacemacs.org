@@ -136,7 +136,6 @@
                                         mastodon
                                         emojify
                                         telega
-                                        emms
     )
 
      ;; A list of packages that cannot be updated.
