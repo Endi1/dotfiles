@@ -136,6 +136,7 @@
                                         mastodon
                                         emojify
                                         telega
+                                        smudge
     )
 
      ;; A list of packages that cannot be updated.
