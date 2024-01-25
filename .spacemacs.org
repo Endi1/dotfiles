@@ -86,11 +86,12 @@
             org-todo-dependencies-strategy 'semiauto
             org-agenda-custom-commands
             '(
-              ("p" "Project TODOs" tags-todo "project")
-              ("t" "Non-project TODOs" tags-todo "-project")
               ("o" "Office block agenda"
                ((agenda "" ((org-agenda-span 1)))
-                (tags-todo "vetted")
+                (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+                (tags-todo "-vetted-project")
+                (agenda "")
+                (tags "backlog+LEVEL=2")
                 )
                )
               )
