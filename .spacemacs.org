@@ -84,7 +84,16 @@
             org-agenda-todo-ignore-with-date t
             org-agenda-todo-ignore-scheduled 'all
             org-todo-dependencies-strategy 'semiauto
-            org-agenda-custom-commands '(("o" "Scheduled TODOs" tags-todo "+SCHEDULED={.}/!" nil) ("p" "Project TODOs" tags-todo "project") ("t" "Non-project TODOs" tags-todo "-project"))
+            org-agenda-custom-commands
+            '(
+              ("p" "Project TODOs" tags-todo "project")
+              ("t" "Non-project TODOs" tags-todo "-project")
+              ("o" "Office block agenda"
+               ((agenda "" ((org-agenda-span 1)))
+                (tags-todo "vetted")
+                )
+               )
+              )
             org-capture-templates
             '(("a" "Activity log" entry (file+datetree "~/Notes/notebook/activity_log.org")
                "* %?\n")
