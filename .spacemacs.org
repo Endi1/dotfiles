@@ -1,179 +1,180 @@
 #+PROPERTY: header-args :tangle ".spacemacs"
-
-
 * My spacemacs configuration
 ** Layers
 #+begin_src elisp :tangle ".spacemacs"
-  (defun dotspacemacs/layers ()
-    (setq-default
-     ;; Base distribution to use. This is a layer contained in the directory
-     ;; `+distribution'. For now available distributions are `spacemacs-base'
-     ;; or `spacemacs'. (default 'spacemacs)
-     dotspacemacs-distribution 'spacemacs
+          (defun dotspacemacs/layers ()
+            (setq-default
+             ;; Base distribution to use. This is a layer contained in the directory
+             ;; `+distribution'. For now available distributions are `spacemacs-base'
+             ;; or `spacemacs'. (default 'spacemacs)
+             dotspacemacs-distribution 'spacemacs
 
-     ;; Lazy installation of layers (i.e. layers are installed only when a file
-     ;; with a supported type is opened). Possible values are `all', `unused'
-     ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
-     ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
-     ;; lazy install any layer that support lazy installation even the layers
-     ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
-     ;; installation feature and you have to explicitly list a layer in the
-     ;; variable `dotspacemacs-configuration-layers' to install it.
-     ;; (default 'unused)
-     dotspacemacs-enable-lazy-installation 'unused
+             ;; Lazy installation of layers (i.e. layers are installed only when a file
+             ;; with a supported type is opened). Possible values are `all', `unused'
+             ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
+             ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
+             ;; lazy install any layer that support lazy installation even the layers
+             ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
+             ;; installation feature and you have to explicitly list a layer in the
+             ;; variable `dotspacemacs-configuration-layers' to install it.
+             ;; (default 'unused)
+             dotspacemacs-enable-lazy-installation 'unused
 
-     ;; If non-nil then Spacemacs will ask for confirmation before installing
-     ;; a layer lazily. (default t)
-     dotspacemacs-ask-for-lazy-installation t
+             ;; If non-nil then Spacemacs will ask for confirmation before installing
+             ;; a layer lazily. (default t)
+             dotspacemacs-ask-for-lazy-installation t
 
-     ;; List of additional paths where to look for configuration layers.
-     ;; Paths must have a trailing slash (i.e. "~/.mycontribs/")
-     dotspacemacs-configuration-layer-path '()
+             ;; List of additional paths where to look for configuration layers.
+             ;; Paths must have a trailing slash (i.e. "~/.mycontribs/")
+             dotspacemacs-configuration-layer-path '()
 
-     ;; List of configuration layers to load.
-     dotspacemacs-configuration-layers
-     '(
-       yaml
-       (tree-sitter :variables
-                    tree-sitter-syntax-enable t)
-       sql
-       (shell :variables
-              shell-default-shell 'multi-vterm
-              shell-default-position 'bottom
-              shell-default-width 50
-              multi-term-program "/bin/zsh")
-       html
-       (haskell
-        :variables
-        haskell-enable-hindent-style "johan-tibell")
-       multiple-cursors
-       (yaml :variables yaml-enable-lsp t)
-       csv
-       (javascript :variables javascript-backend 'lsp)
-       (python :variables
-               python-backend 'lsp python-lsp-server 'pylsp
-               python-formatter 'black
-               python-format-on-save t)
-       (typescript :variables
-               typescript-fmt-tool 'prettier
-               typescript-fmt-on-save t
-       )
-       (vue :variables vue-backend 'lsp)
-       rust
-       epub
-       evil-commentary
-       spacemacs-editing
-       better-defaults
-       emacs-lisp
-       git
-       compleseus
-       lsp
-       markdown
-       multiple-cursors
-       mermaid
-       mastodon
-       docker
-       (elfeed :variables
-               rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
-       (org :variables
-            org-enable-roam-support t
-            org-enable-roam-ui t
-            org-roam-directory "/home/endi/Notes/org-roam"
-            org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELLED"))
-            org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org")
-            org-agenda-todo-ignore-with-date t
-            org-agenda-todo-ignore-scheduled 'all
-            org-todo-dependencies-strategy 'semiauto
-            org-agenda-custom-commands
-            '(
-              ("o" "Office block agenda"
-               ((agenda "" ((org-agenda-span 1)))
-                (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
-                (tags-todo "-vetted-project")
-                (agenda "")
-                (tags "backlog+LEVEL=2")
-                )
+             ;; List of configuration layers to load.
+             dotspacemacs-configuration-layers
+             '(
+               yaml
+               (tree-sitter :variables
+                            tree-sitter-syntax-enable t)
+               sql
+               (shell :variables
+                      shell-default-shell 'multi-vterm
+                      shell-default-position 'bottom
+                      shell-default-width 50
+                      multi-term-program "/bin/zsh")
+               html
+               (haskell
+                :variables
+                haskell-enable-hindent-style "johan-tibell")
+               multiple-cursors
+               (yaml :variables yaml-enable-lsp t)
+               csv
+               (javascript :variables javascript-backend 'lsp)
+               (python :variables
+                       python-backend 'lsp python-lsp-server 'pylsp
+                       python-formatter 'black
+                       python-format-on-save t)
+               (typescript :variables
+                       typescript-fmt-tool 'prettier
+                       typescript-fmt-on-save t
                )
-              )
-            org-capture-templates
-            '(("a" "Activity log" entry (file+datetree "~/Notes/notebook/activity_log.org")
-               "* %?\n")
-              ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
-               "* TODO %?\n")
-              ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
-               "* %?\n")
-              ("h" "Highlight" entry (file+headline "~/Notes/notebook/journal.org" "Highlights")
-               "* %U\n%?\n:PROPERTIES:\n:Source: %f\n:END:\n\n" :empty-lines 1)
-              ("b" "Bookmark" entry (file+headline "~/Notes/notebook/bookmarks.org" "Inbox")
-               "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
-              )
-            org-refile-targets
-            '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
-              ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1))
-            org-priority-faces
-            '((?A :foreground "#ff6c6b" :weight bold)
-              (?B :foreground "#98be65" :weight bold)
-              (?C :foreground "#c678dd" :weight bold))
-            org-agenda-block-separator 8411
-       )
-       version-control
-       treemacs
-       (auto-completion :variables
-                        auto-completion-idle-delay 0.0
-                        auto-completion-enable-snippets-in-popup t
-                        auto-completion-enable-help-tooltip t)
-       )
+               (vue :variables vue-backend 'lsp)
+               rust
+               epub
+               evil-commentary
+               spacemacs-editing
+               better-defaults
+               emacs-lisp
+               git
+               compleseus
+               lsp
+               markdown
+               multiple-cursors
+               mermaid
+               mastodon
+               docker
+               (elfeed :variables
+                       rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
+               (org :variables
+                    org-enable-roam-support t
+                    org-enable-roam-ui t
+                    org-roam-directory "/home/endi/Notes/org-roam"
+                    org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELLED"))
+                    org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org")
+                    org-agenda-todo-ignore-with-date t
+                    org-agenda-todo-ignore-scheduled 'all
+                    org-todo-dependencies-strategy 'semiauto
+                    org-agenda-custom-commands
+                    '(
+                      ("o" "Office block agenda"
+                       ((agenda "" ((org-agenda-span 1)))
+                        (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+                        (tags-todo "-vetted-project")
+                        (agenda "")
+                        (tags "backlog+LEVEL=2")
+                        )
+                       )
+                      )
+                    org-capture-templates
+                    '(("a" "Activity log" entry (file+datetree "~/Notes/notebook/activity_log.org")
+                       "* %?\n")
+                      ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
+                       "* TODO %?\n")
+                      ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
+                       "* %?\n")
+                      ("h" "Highlight" entry (file+headline "~/Notes/notebook/journal.org" "Highlights")
+                       "* %U\n%?\n:PROPERTIES:\n:Source: %f\n:END:\n\n" :empty-lines 1)
+                      ("b" "Bookmark" entry (file+headline "~/Notes/notebook/bookmarks.org" "Inbox")
+                       "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+                      )
+                    org-refile-targets
+                    '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
+                      ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1))
+                    org-priority-faces
+                    '((?A :foreground "#ff6c6b" :weight bold)
+                      (?B :foreground "#98be65" :weight bold)
+                      (?C :foreground "#c678dd" :weight bold))
+                    org-agenda-block-separator 8411
+               )
+               (version-control :variables
+                                version-control-diff-tool 'git-gutter+
+                                version-control-diff-side 'left
+                                version-control-global-margin t)
+               treemacs
+               (auto-completion :variables
+                                auto-completion-idle-delay 0.0
+                                auto-completion-enable-snippets-in-popup t
+                                auto-completion-enable-help-tooltip t)
+               )
 
 
-     ;; List of additional packages that will be installed without being wrapped
-     ;; in a layer (generally the packages are installed only and should still be
-     ;; loaded using load/require/use-package in the user-config section below in
-     ;; this file). If you need some configuration for these packages, then
-     ;; consider creating a layer. You can also put the configuration in
-     ;; `dotspacemacs/user-config'. To use a local version of a package, use the
-     ;; `:location' property: '(your-package :location "~/path/to/your-package/")
-     ;; Also include the dependencies as they will not be resolved automatically.
-     dotspacemacs-additional-packages '(
-                                        evil-surround
-                                        (copilot :location (recipe
-                                                            :fetcher github
-                                                            :repo "zerolfx/copilot.el"
-                                                            :files ("*.el" "dist" "*.py")))
-                                        flymake-ruff
-                                        rustic
-                                        (indent-bars :location (recipe
-                                                                :fetcher github
-                                                                :repo "jdtsmith/indent-bars"))
-                                        vundo
-                                        restclient
-                                        vertico-posframe
-                                        spacious-padding
-                                        kaolin-themes
-                                        mood-line
-                                        org-ql
-                                        bufler
-                                        one
-                                        mastodon
-                                        emojify
-                                        telega
-                                        smudge
-                                        ormolu
-    )
+             ;; List of additional packages that will be installed without being wrapped
+             ;; in a layer (generally the packages are installed only and should still be
+             ;; loaded using load/require/use-package in the user-config section below in
+             ;; this file). If you need some configuration for these packages, then
+             ;; consider creating a layer. You can also put the configuration in
+             ;; `dotspacemacs/user-config'. To use a local version of a package, use the
+             ;; `:location' property: '(your-package :location "~/path/to/your-package/")
+             ;; Also include the dependencies as they will not be resolved automatically.
+             dotspacemacs-additional-packages '(
+                                                evil-surround
+                                                (copilot :location (recipe
+                                                                    :fetcher github
+                                                                    :repo "zerolfx/copilot.el"
+                                                                    :files ("*.el" "dist" "*.py")))
+                                                flymake-ruff
+                                                rustic
+                                                (indent-bars :location (recipe
+                                                                        :fetcher github
+                                                                        :repo "jdtsmith/indent-bars"))
+                                                vundo
+                                                restclient
+                                                vertico-posframe
+                                                spacious-padding
+                                                kaolin-themes
+                                                mood-line
+                                                org-ql
+                                                bufler
+                                                one
+                                                mastodon
+                                                emojify
+                                                telega
+                                                smudge
+                                                ormolu
+            )
 
-     ;; A list of packages that cannot be updated.
-     dotspacemacs-frozen-packages '()
+             ;; A list of packages that cannot be updated.
+             dotspacemacs-frozen-packages '()
 
-     ;; A list of packages that will not be installed and loaded.
-     dotspacemacs-excluded-packages '()
+             ;; A list of packages that will not be installed and loaded.
+             dotspacemacs-excluded-packages '()
 
-     ;; Defines the behaviour of Spacemacs when installing packages.
-     ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-     ;; `used-only' installs only explicitly used packages and deletes any unused
-     ;; packages as well as their unused dependencies. `used-but-keep-unused'
-     ;; installs only the used packages but won't delete unused ones. `all'
-     ;; installs *all* packages supported by Spacemacs and never uninstalls them.
-     ;; (default is `used-only')
-     dotspacemacs-install-packages 'used-only))
+             ;; Defines the behaviour of Spacemacs when installing packages.
+             ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+             ;; `used-only' installs only explicitly used packages and deletes any unused
+             ;; packages as well as their unused dependencies. `used-but-keep-unused'
+             ;; installs only the used packages but won't delete unused ones. `all'
+             ;; installs *all* packages supported by Spacemacs and never uninstalls them.
+             ;; (default is `used-only')
+             dotspacemacs-install-packages 'used-only))
 #+end_src
 
 #+RESULTS:
@@ -698,7 +699,7 @@
     (add-hook 'haskell-mode-hook 'ormolu-format-on-save-mode)
     (evil-set-undo-system 'undo-redo)
     (add-hook 'prog-mode-hook 'indent-bars-mode)
-    (fringe-mode '(0 . 0))
+    (fringe-mode)
     (org-roam-db-autosync-mode t)
     (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
     (add-hook 'python-mode-hook #'flymake-ruff-load)
