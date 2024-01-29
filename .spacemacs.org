@@ -87,7 +87,7 @@
                       ("o" "Office block agenda"
                        ((agenda "" ((org-agenda-span 1)))
                         (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
-                        (tags-todo "-vetted-project")
+                        (tags-todo "-vetted-project" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
                         (agenda "")
                         (tags "backlog+LEVEL=2")
                         )
