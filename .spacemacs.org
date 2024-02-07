@@ -142,7 +142,6 @@
                                                             :repo "zerolfx/copilot.el"
                                                             :files ("*.el" "dist" "*.py")))
                                         flymake-ruff
-                                        rustic
                                         (indent-bars :location (recipe
                                                                 :fetcher github
                                                                 :repo "jdtsmith/indent-bars"))
