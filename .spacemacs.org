@@ -67,6 +67,7 @@
        compleseus
        lsp
        markdown
+       pdf
        multiple-cursors
        mermaid
        mastodon
