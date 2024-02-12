@@ -78,7 +78,7 @@
             org-enable-roam-support t
             org-enable-roam-ui t
             org-roam-directory "/home/endi/Notes/org-roam"
-            org-todo-keywords '((sequence "TODO" "|" "DONE" "CANCELLED"))
+            org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
             org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org")
             org-agenda-todo-ignore-with-date t
             org-projectile-file "project.org"
