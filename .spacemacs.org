@@ -79,7 +79,7 @@
             org-enable-roam-ui t
             org-roam-directory "/home/endi/Notes/org-roam"
             org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
-            org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org")
+            org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org" "~/Notes/notebook/read_later.org")
             org-agenda-todo-ignore-with-date t
             org-projectile-file "project.org"
             org-agenda-todo-ignore-scheduled 'all
@@ -96,19 +96,23 @@
                )
               )
             org-capture-templates
-            '(("a" "Activity log" entry (file+datetree "~/Notes/notebook/activity_log.org")
-               "* %?\n")
+            '(
               ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
                "* TODO %?\n")
+              ("w" "Work Todo" entry (file+headline "~/Notes/notebook/work.org" "Tasks")
+               "* TODO %?\n%U")
+              ("s" "Sprint Planning" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
+               "* TODO %?\n%U")
+              ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
+               "* TODO %?\n%U")
               ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
                "* %?\n")
-              ("h" "Highlight" entry (file+headline "~/Notes/notebook/journal.org" "Highlights")
-               "* %U\n%?\n:PROPERTIES:\n:Source: %f\n:END:\n\n" :empty-lines 1)
               ("b" "Bookmark" entry (file+headline "~/Notes/notebook/bookmarks.org" "Inbox")
                "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
               )
             org-refile-targets
             '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
+              ("/home/endi/Notes/notebook/work.org" :maxlevel . 1)
               ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1))
             org-priority-faces
             '((?A :foreground "#ff6c6b" :weight bold)
