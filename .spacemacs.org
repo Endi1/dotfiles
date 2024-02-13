@@ -160,6 +160,7 @@
                                         telega
                                         smudge
                                         ormolu
+                                        org-web-tools
     )
 
      ;; A list of packages that cannot be updated.
