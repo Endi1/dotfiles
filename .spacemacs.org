@@ -89,7 +89,7 @@
               ("o" "Office block agenda"
                ((agenda "" ((org-agenda-span 1)))
                 (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
-                (tags-todo "-vetted-project" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+                (tags-todo "-vetted-project-read_later" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
                 (agenda "")
                 (tags "backlog+LEVEL=2")
                 )
@@ -105,11 +105,9 @@
               ("s" "Note for next sprint" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
                "* TODO %?\n%U")
               ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
-               "* TODO %?\n%U")
+               "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
               ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
                "* %?\n")
-              ("b" "Bookmark" entry (file+headline "~/Notes/notebook/bookmarks.org" "Inbox")
-               "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
               )
             org-refile-targets
             '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
