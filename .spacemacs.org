@@ -1,9 +1,6 @@
 #+PROPERTY: header-args :tangle ".spacemacs"
 * My spacemacs configuration
 ** Layers
-:LOGBOOK:
-CLOCK: [2024-02-14 mer 00:56]
-:END:
 #+begin_src elisp :tangle ".spacemacs"
   (defun dotspacemacs/layers ()
     (setq-default
@@ -105,7 +102,7 @@ CLOCK: [2024-02-14 mer 00:56]
                "* TODO %?\n")
               ("w" "Work Todo" entry (file+headline "~/Notes/notebook/work.org" "Tasks")
                "* TODO %?\n%U")
-              ("s" "Sprint Planning" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
+              ("s" "Note for next sprint" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
                "* TODO %?\n%U")
               ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
                "* TODO %?\n%U")
