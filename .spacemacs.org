@@ -1,6 +1,9 @@
 #+PROPERTY: header-args :tangle ".spacemacs"
 * My spacemacs configuration
 ** Layers
+:LOGBOOK:
+CLOCK: [2024-02-14 mer 00:56]
+:END:
 #+begin_src elisp :tangle ".spacemacs"
   (defun dotspacemacs/layers ()
     (setq-default
@@ -94,6 +97,7 @@
                 (tags "backlog+LEVEL=2")
                 )
                )
+              ("r" "Read later" todo "TODO" ((org-agenda-files '("~/Notes/notebook/read_later.org"))))
               )
             org-capture-templates
             '(
@@ -113,7 +117,8 @@
             org-refile-targets
             '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
               ("/home/endi/Notes/notebook/work.org" :maxlevel . 1)
-              ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1))
+              ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1)
+              ("/home/endi/Notes/notebook/bookmarks.org" :maxlevel . 1))
             org-priority-faces
             '((?A :foreground "#ff6c6b" :weight bold)
               (?B :foreground "#98be65" :weight bold)
@@ -185,7 +190,6 @@
 
 #+RESULTS:
 : dotspacemacs/layers
-
 ** Initialization function
 #+begin_src elisp :tangle ".spacemacs"
   (defun dotspacemacs/init ()
