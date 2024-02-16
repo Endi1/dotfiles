@@ -32,7 +32,7 @@
 #+end_src
 
 ** Layers
-*** TODO Layers with default settings
+*** Layers with default settings
 #+begin_src elisp
      dotspacemacs-configuration-layers
      '(
@@ -57,139 +57,138 @@
        docker
        treemacs
 #+end_src
-
+*** Layers with custom settings
 #+begin_src elisp :tangle ".spacemacs"
-     ;; List of configuration layers to load.
-       (tree-sitter :variables
-                    tree-sitter-syntax-enable t)
-       (shell :variables
-              shell-default-shell 'multi-vterm
-              shell-default-position 'bottom
-              shell-default-width 50
-              multi-term-program "/bin/zsh")
-       (haskell
-        :variables
-        haskell-enable-hindent-style "johan-tibell")
-       (yaml :variables yaml-enable-lsp t)
-       (javascript :variables javascript-backend 'lsp)
-       (python :variables
-               python-backend 'lsp python-lsp-server 'pylsp
-               python-formatter 'black
-               python-format-on-save t)
-       (typescript :variables
-               typescript-fmt-tool 'prettier
-               typescript-fmt-on-save t)
-       (vue :variables vue-backend 'lsp)
-       (elfeed :variables
-               rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
-       (org :variables
-            org-enable-roam-support t
-            org-enable-roam-ui t
-            org-roam-directory "/home/endi/Notes/org-roam"
-            org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
-            org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org" "~/Notes/notebook/read_later.org")
-            org-agenda-todo-ignore-with-date t
-            org-projectile-file "project.org"
-            org-agenda-todo-ignore-scheduled 'all
-            org-todo-dependencies-strategy 'semiauto
-            org-agenda-custom-commands
-            '(
-              ("o" "Office block agenda"
-               ((agenda "" ((org-agenda-span 1)))
-                (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
-                (tags-todo "-vetted-project-read_later" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
-                (agenda "")
-                (tags "backlog+LEVEL=2")
-                )
-               )
-              ("r" "Read later" todo "TODO" ((org-agenda-files '("~/Notes/notebook/read_later.org"))))
+   ;; List of configuration layers to load.
+     (tree-sitter :variables
+                  tree-sitter-syntax-enable t)
+     (shell :variables
+            shell-default-shell 'multi-vterm
+            shell-default-position 'bottom
+            shell-default-width 50
+            multi-term-program "/bin/zsh")
+     (haskell
+      :variables
+      haskell-enable-hindent-style "johan-tibell")
+     (yaml :variables yaml-enable-lsp t)
+     (javascript :variables javascript-backend 'lsp)
+     (python :variables
+             python-backend 'lsp python-lsp-server 'pylsp
+             python-format-on-save t)
+     (typescript :variables
+             typescript-fmt-tool 'prettier
+             typescript-fmt-on-save t)
+     (vue :variables vue-backend 'lsp)
+     (elfeed :variables
+             rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
+     (org :variables
+          org-enable-roam-support t
+          org-enable-roam-ui t
+          org-roam-directory "/home/endi/Notes/org-roam"
+          org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
+          org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org" "~/Notes/notebook/read_later.org")
+          org-agenda-todo-ignore-with-date t
+          org-projectile-file "project.org"
+          org-agenda-todo-ignore-scheduled 'all
+          org-todo-dependencies-strategy 'semiauto
+          org-agenda-custom-commands
+          '(
+            ("o" "Office block agenda"
+             ((agenda "" ((org-agenda-span 1)))
+              (tags-todo "vetted" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+              (tags-todo "-vetted-project-read_later" ((org-agenda-skip-function '(org-agenda-skip-entry-if 'scheduled))))
+              (agenda "")
+              (tags "backlog+LEVEL=2")
               )
-            org-capture-templates
-            '(
-              ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
-               "* TODO %?\n")
-              ("w" "Work Todo" entry (file+headline "~/Notes/notebook/work.org" "Tasks")
-               "* TODO %?\n%U")
-              ("s" "Note for next sprint" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
-               "* TODO %?\n%U")
-              ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
-               "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
-              ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
-               "* %?\n")
-              )
-            org-refile-targets
-            '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
-              ("/home/endi/Notes/notebook/work.org" :maxlevel . 1)
-              ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1)
-              ("/home/endi/Notes/notebook/bookmarks.org" :maxlevel . 1))
-            org-priority-faces
-            '((?A :foreground "#ff6c6b" :weight bold)
-              (?B :foreground "#98be65" :weight bold)
-              (?C :foreground "#c678dd" :weight bold))
-            org-agenda-block-separator 8411
-       )
-       (version-control :variables
-                        version-control-diff-tool 'git-gutter+
-                        version-control-diff-side 'left
-                        version-control-global-margin t)
-       (auto-completion :variables
-                        auto-completion-idle-delay 0.0
-                        auto-completion-enable-snippets-in-popup t
-                        auto-completion-enable-help-tooltip t)
-       )
+             )
+            ("r" "Read later" todo "TODO" ((org-agenda-files '("~/Notes/notebook/read_later.org"))))
+            )
+          org-capture-templates
+          '(
+            ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
+             "* TODO %?\n")
+            ("w" "Work Todo" entry (file+headline "~/Notes/notebook/work.org" "Tasks")
+             "* TODO %?\n%U")
+            ("s" "Note for next sprint" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
+             "* TODO %?\n%U")
+            ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
+             "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+            ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
+             "* %?\n")
+            )
+          org-refile-targets
+          '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
+            ("/home/endi/Notes/notebook/work.org" :maxlevel . 1)
+            ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1)
+            ("/home/endi/Notes/notebook/bookmarks.org" :maxlevel . 1))
+          org-priority-faces
+          '((?A :foreground "#ff6c6b" :weight bold)
+            (?B :foreground "#98be65" :weight bold)
+            (?C :foreground "#c678dd" :weight bold))
+          org-agenda-block-separator 8411
+     )
+     (version-control :variables
+                      version-control-diff-tool 'git-gutter+
+                      version-control-diff-side 'left
+                      version-control-global-margin t)
+     (auto-completion :variables
+                      auto-completion-idle-delay 0.0
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t)
+     )
 
 
-     ;; List of additional packages that will be installed without being wrapped
-     ;; in a layer (generally the packages are installed only and should still be
-     ;; loaded using load/require/use-package in the user-config section below in
-     ;; this file). If you need some configuration for these packages, then
-     ;; consider creating a layer. You can also put the configuration in
-     ;; `dotspacemacs/user-config'. To use a local version of a package, use the
-     ;; `:location' property: '(your-package :location "~/path/to/your-package/")
-     ;; Also include the dependencies as they will not be resolved automatically.
-     dotspacemacs-additional-packages '(
-                                        evil-surround
-                                        (copilot :location (recipe
-                                                            :fetcher github
-                                                            :repo "zerolfx/copilot.el"
-                                                            :files ("*.el" "dist" "*.py")))
-                                        flymake-ruff
-                                        (indent-bars :location (recipe
-                                                                :fetcher github
-                                                                :repo "jdtsmith/indent-bars"))
-                                        vundo
-                                        restclient
-                                        vertico-posframe
-                                        spacious-padding
-                                        kaolin-themes
-                                        mood-line
-                                        org-ql
-                                        bufler
-                                        one
-                                        mastodon
-                                        emojify
-                                        telega
-                                        smudge
-                                        ormolu
-                                        org-web-tools
-    )
+   ;; List of additional packages that will be installed without being wrapped
+   ;; in a layer (generally the packages are installed only and should still be
+   ;; loaded using load/require/use-package in the user-config section below in
+   ;; this file). If you need some configuration for these packages, then
+   ;; consider creating a layer. You can also put the configuration in
+   ;; `dotspacemacs/user-config'. To use a local version of a package, use the
+   ;; `:location' property: '(your-package :location "~/path/to/your-package/")
+   ;; Also include the dependencies as they will not be resolved automatically.
+   dotspacemacs-additional-packages '(
+                                      evil-surround
+                                      (copilot :location (recipe
+                                                          :fetcher github
+                                                          :repo "zerolfx/copilot.el"
+                                                          :files ("*.el" "dist" "*.py")))
+                                      flymake-ruff
+                                      (indent-bars :location (recipe
+                                                              :fetcher github
+                                                              :repo "jdtsmith/indent-bars"))
+                                      vundo
+                                      restclient
+                                      vertico-posframe
+                                      spacious-padding
+                                      kaolin-themes
+                                      mood-line
+                                      org-ql
+                                      bufler
+                                      one
+                                      mastodon
+                                      emojify
+                                      telega
+                                      smudge
+                                      ormolu
+                                      org-web-tools
+                                      ruff-format
+  )
 
-     ;; A list of packages that cannot be updated.
-     dotspacemacs-frozen-packages '()
+   ;; A list of packages that cannot be updated.
+   dotspacemacs-frozen-packages '()
 
-     ;; A list of packages that will not be installed and loaded.
-     dotspacemacs-excluded-packages '()
+   ;; A list of packages that will not be installed and loaded.
+   dotspacemacs-excluded-packages '()
 
-     ;; Defines the behaviour of Spacemacs when installing packages.
-     ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
-     ;; `used-only' installs only explicitly used packages and deletes any unused
-     ;; packages as well as their unused dependencies. `used-but-keep-unused'
-     ;; installs only the used packages but won't delete unused ones. `all'
-     ;; installs *all* packages supported by Spacemacs and never uninstalls them.
-     ;; (default is `used-only')
-     dotspacemacs-install-packages 'used-only))
+   ;; Defines the behaviour of Spacemacs when installing packages.
+   ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+   ;; `used-only' installs only explicitly used packages and deletes any unused
+   ;; packages as well as their unused dependencies. `used-but-keep-unused'
+   ;; installs only the used packages but won't delete unused ones. `all'
+   ;; installs *all* packages supported by Spacemacs and never uninstalls them.
+   ;; (default is `used-only')
+   dotspacemacs-install-packages 'used-only))
 #+end_src
-
 
 ** Initialization function
 #+begin_src elisp :tangle ".spacemacs"
@@ -721,6 +720,7 @@
     (org-roam-db-autosync-mode t)
     (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
     (add-hook 'python-mode-hook #'flymake-ruff-load)
+    (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
     (setq webjump-sites '(("Shortcut" . "https://app.shortcut.com")))
     (setq mastodon-instance-url "https://fosstodon.org"
           mastodon-active-user "codepenguin")
