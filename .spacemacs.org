@@ -1,7 +1,7 @@
 #+PROPERTY: header-args :tangle ".spacemacs"
 * My spacemacs configuration
-** Layers
-#+begin_src elisp :tangle ".spacemacs"
+** Function start and default settings
+#+begin_src elisp
   (defun dotspacemacs/layers ()
     (setq-default
      ;; Base distribution to use. This is a layer contained in the directory
@@ -28,35 +28,18 @@
      ;; Paths must have a trailing slash (i.e. "~/.mycontribs/")
      dotspacemacs-configuration-layer-path '()
 
-     ;; List of configuration layers to load.
+
+#+end_src
+
+** Layers
+*** TODO Layers with default settings
+#+begin_src elisp
      dotspacemacs-configuration-layers
      '(
-       yaml
-       (tree-sitter :variables
-                    tree-sitter-syntax-enable t)
        sql
-       (shell :variables
-              shell-default-shell 'multi-vterm
-              shell-default-position 'bottom
-              shell-default-width 50
-              multi-term-program "/bin/zsh")
        html
-       (haskell
-        :variables
-        haskell-enable-hindent-style "johan-tibell")
        multiple-cursors
-       (yaml :variables yaml-enable-lsp t)
        csv
-       (javascript :variables javascript-backend 'lsp)
-       (python :variables
-               python-backend 'lsp python-lsp-server 'pylsp
-               python-formatter 'black
-               python-format-on-save t)
-       (typescript :variables
-               typescript-fmt-tool 'prettier
-               typescript-fmt-on-save t
-       )
-       (vue :variables vue-backend 'lsp)
        rust
        epub
        evil-commentary
@@ -72,6 +55,31 @@
        mermaid
        mastodon
        docker
+       treemacs
+#+end_src
+
+#+begin_src elisp :tangle ".spacemacs"
+     ;; List of configuration layers to load.
+       (tree-sitter :variables
+                    tree-sitter-syntax-enable t)
+       (shell :variables
+              shell-default-shell 'multi-vterm
+              shell-default-position 'bottom
+              shell-default-width 50
+              multi-term-program "/bin/zsh")
+       (haskell
+        :variables
+        haskell-enable-hindent-style "johan-tibell")
+       (yaml :variables yaml-enable-lsp t)
+       (javascript :variables javascript-backend 'lsp)
+       (python :variables
+               python-backend 'lsp python-lsp-server 'pylsp
+               python-formatter 'black
+               python-format-on-save t)
+       (typescript :variables
+               typescript-fmt-tool 'prettier
+               typescript-fmt-on-save t)
+       (vue :variables vue-backend 'lsp)
        (elfeed :variables
                rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
        (org :variables
@@ -124,7 +132,6 @@
                         version-control-diff-tool 'git-gutter+
                         version-control-diff-side 'left
                         version-control-global-margin t)
-       treemacs
        (auto-completion :variables
                         auto-completion-idle-delay 0.0
                         auto-completion-enable-snippets-in-popup t
@@ -183,8 +190,7 @@
      dotspacemacs-install-packages 'used-only))
 #+end_src
 
-#+RESULTS:
-: dotspacemacs/layers
+
 ** Initialization function
 #+begin_src elisp :tangle ".spacemacs"
   (defun dotspacemacs/init ()
@@ -724,64 +730,3 @@
 
 #+RESULTS:
 : dotspacemacs/user-config
-* TODO Improve separation of concern between parts of the config
-** [[https://michal.sapka.me/emacs/org-babel/][[Michał Sapka's website] Executing code in Org files with Babel]] :website:
-
-[2024-02-12 lun 18:41]
-
-*** Article
-
-**** Joining the blocks together
-
-In /strict/ Literate Programming sense, your /web// should not be where you execute code. Instead, you should extract programmatic parts and run it separately - the process is called /tangling/.
-
-Babel bypasses this limitation with =noweb= mode, in which code blocks can reference each other. First, you need to name your code blocks:
-
-#+begin_example
-    #+NAME: two
-   #+BEGIN_SRC emacs-lisp
-  ( +  1  1)
-   #+END_SRC
-#+end_example
-
-Then we can use it the result other code blocks
-
-#+begin_example
-    #+NAME: three
-   #+BEGIN_SRC emacs-lisp :noweb yes
-  ( + <<two>>  1)
-   #+END_SRC
-#+end_example
-
-Here, the =<<two>>= will be replaced with the result of block named =two=. This makes the block =three= return the number =3=.
-
-This mode gives quite a lot more option. You can read about them inside [[https://orgmode.org/manual/Noweb-Reference-Syntax.html][manual]].
-
-**** Babel as source for Emacs configuration
-
-The most popular use case of Babel however is Emacs configuration. You can have as many org files as you want, have the configuration inside =emacs-lisp= code blocks and use that as config.
-
-***** Loading files directly
-
-If your config isn't /very/ complicated, you can force Emacs to parse the files on boot. To achieve that, add
-
-#+begin_example
-   (org-babel-load-file  "~/.emacs.d/config.org")
-#+end_example
-
-To your =init.el=.
-
-What happens is, that Emacs will create a corresponding =config.el= ( /tangle/) file and load it as a elisp file. Just remember not to name your config as =init.org= as there will be naming conflict with =init.el=.
-
-***** Pre-tangling
-
-If you don't want /tangling/ on boot time, but rather want to have it ready you can manually /org-babel-tangle/. To achieve it, add a =tangle= header argument to all you code blocks:
-
-#+begin_example
-    #+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/init.el
-  ( +  1  1)
-   #+END_SRC
-#+end_example
-
-And then, after any changes of the file run =org-babel-tangle= and your =init.el= will be up-to-date. This is the approach [[https://protesilaos.com/codelog/2023-12-18-emacs-org-advanced-literate-conf/][Prot]] uses, but his config consists of over /17_000/ [sic!] lines of org file, so your mileage may vary.
-
