@@ -73,7 +73,6 @@
      (yaml :variables yaml-enable-lsp t)
      (javascript :variables javascript-backend 'lsp)
      (python :variables
-             python-backend 'lsp python-lsp-server 'pylsp
              python-format-on-save t)
      (typescript :variables
              typescript-fmt-tool 'prettier
