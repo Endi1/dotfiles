@@ -109,11 +109,14 @@
             ("w" "Work Todo" entry (file+headline "~/Notes/notebook/work.org" "Tasks")
              "* TODO %?\n%U")
             ("s" "Note for next sprint" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
-             "* TODO %?\n%U")
+             "* %?\n")
             ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
              "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
             ("i" "Note" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
              "* %?\n")
+            ("d" "Daily plan" plain (file+datetree "~/Notes/notebook/bujo.org")
+             "Three important tasks\n- [ ]\n- [ ]\n- [ ]\nThings I would like to do\n- [ ]\nPersonal stuff\n- [ ] Journal entry"
+             )
             )
           org-refile-targets
           '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
