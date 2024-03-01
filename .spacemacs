@@ -69,7 +69,7 @@ dotspacemacs-configuration-layers
    (org :variables
         org-enable-roam-support t
         org-enable-roam-ui t
-        org-roam-directory "/home/endi/Notes/org-roam"
+        org-roam-directory "~/Notes/org-roam"
         org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
         org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org" "~/Notes/notebook/read_later.org")
         org-agenda-todo-ignore-with-date t
