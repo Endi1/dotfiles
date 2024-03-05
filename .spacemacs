@@ -30,7 +30,7 @@ dotspacemacs-configuration-layers
   html
   multiple-cursors
   csv
-  rust
+  ;; rust
   epub
   evil-commentary
   spacemacs-editing
@@ -42,8 +42,6 @@ dotspacemacs-configuration-layers
   markdown
   pdf
   multiple-cursors
-  mermaid
-  mastodon
   docker
   treemacs
 
@@ -71,7 +69,7 @@ dotspacemacs-configuration-layers
    (org :variables
         org-enable-roam-support t
         org-enable-roam-ui t
-        org-roam-directory "/home/endi/Notes/org-roam"
+        org-roam-directory "~/Notes/org-roam"
         org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
         org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org" "~/Notes/notebook/read_later.org")
         org-agenda-todo-ignore-with-date t
@@ -155,7 +153,6 @@ dotspacemacs-configuration-layers
                                     org-ql
                                     bufler
                                     one
-                                    mastodon
                                     emojify
                                     telega
                                     smudge
@@ -700,12 +697,39 @@ before packages are loaded."
   (add-hook 'prog-mode-hook 'indent-bars-mode)
   (fringe-mode)
   (org-roam-db-autosync-mode t)
-  (setq ob-mermaid-cli-path "/home/endi/.nvm/versions/node/v19.1.0/bin/mmdc")
   (add-hook 'python-mode-hook #'flymake-ruff-load)
   (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
   (setq webjump-sites '(("Shortcut" . "https://app.shortcut.com")))
-  (setq mastodon-instance-url "https://fosstodon.org"
-        mastodon-active-user "codepenguin")
-
-
   )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(dap-mode lsp-docker bui yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toml-mode toc-org terminal-here term-cursor telega tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smudge smeargle slim-mode shell-pop scss-mode sass-mode rustic ruff-format ron-mode restclient restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-web-tools org-superstar org-roam-ui org-rich-yank org-ql org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nov nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line mastodon markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flymake-ruff flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emojify emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode copilot consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fringe ((t :background "#1a1a25")))
+ '(header-line ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
+ '(header-line-highlight ((t :box (:color "#e6e6e8"))))
+ '(keycast-key ((t)))
+ '(line-number ((t :background "#1a1a25")))
+ '(mode-line ((t :box (:line-width 6 :color "#252534" :style nil))))
+ '(mode-line-active ((t :box (:line-width 6 :color "#252534" :style nil))))
+ '(mode-line-highlight ((t :box (:color "#e6e6e8"))))
+ '(mode-line-inactive ((t :box (:line-width 6 :color "#252534" :style nil))))
+ '(tab-bar-tab ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
+ '(tab-bar-tab-inactive ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
+ '(window-divider ((t :background "#1a1a25" :foreground "#1a1a25")))
+ '(window-divider-first-pixel ((t :background "#1a1a25" :foreground "#1a1a25")))
+ '(window-divider-last-pixel ((t :background "#1a1a25" :foreground "#1a1a25"))))
+)
