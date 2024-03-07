@@ -678,7 +678,6 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "SPC b b") #'bufler-switch-buffer)
   (define-key evil-normal-state-map (kbd "SPC o f") #'org-ql-find-in-agenda)
   (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
-  (define-key evil-normal-state-map (kbd "gd") #'lsp-find-references)
   (define-key evil-normal-state-map (kbd "C-/") #'evil-commentary)
   (define-key evil-normal-state-map (kbd "SPC n i") #'org-roam-node-insert)
   (define-key evil-normal-state-map (kbd "SPC n f") #'org-roam-node-find)
