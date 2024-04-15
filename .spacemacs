@@ -137,10 +137,7 @@ dotspacemacs-configuration-layers
  ;; Also include the dependencies as they will not be resolved automatically.
  dotspacemacs-additional-packages '(
                                     evil-surround
-                                    (copilot :location (recipe
-                                                        :fetcher github
-                                                        :repo "zerolfx/copilot.el"
-                                                        :files ("*.el" "dist" "*.py")))
+
                                     flymake-ruff
                                     (indent-bars :location (recipe
                                                             :fetcher github
@@ -665,13 +662,6 @@ before packages are loaded."
                  (push file org-agenda-files)))
         (org-projectile-todo-files)))
 
-
-  (with-eval-after-load 'copilot
-    (define-key copilot-completion-map (kbd "M-<right>") 'copilot-accept-completion-by-line)
-    (define-key copilot-completion-map (kbd "M-<return>") 'copilot-accept-completion)
-    (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
-    (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
-
   (spacious-padding-mode)
   (golden-ratio-mode)
   (vertico-posframe-mode)
@@ -699,6 +689,9 @@ before packages are loaded."
   (org-roam-db-autosync-mode t)
   (add-hook 'python-mode-hook #'flymake-ruff-load)
   (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
+  (add-hook 'python-ts-mode-hook #'flymake-ruff-load)
+  (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
+  (add-hook 'python-ts-mode-hook 'lsp-mode)
   (setq webjump-sites '(("Shortcut" . "https://app.shortcut.com")))
   )
 (defun dotspacemacs/emacs-custom-settings ()
@@ -711,6 +704,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(major-mode-remap-alist '((python-mode . python-ts-mode)))
  '(package-selected-packages
    '(difftastic company-lua lua-mode counsel-gtags counsel swiper ivy ggtags rust-mode dap-mode lsp-docker bui yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toml-mode toc-org terminal-here term-cursor telega tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smudge smeargle slim-mode shell-pop scss-mode sass-mode rustic ruff-format ron-mode restclient restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-web-tools org-superstar org-roam-ui org-rich-yank org-ql org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nov nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line mastodon markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flymake-ruff flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emojify emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode copilot consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
 (custom-set-faces
