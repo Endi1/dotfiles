@@ -94,7 +94,7 @@ dotspacemacs-configuration-layers
           ("t" "Todo" entry (file+headline "~/Notes/notebook/journal.org" "Inbox")
            "* TODO %?\n")
           ("w" "Work Todo" entry (file+headline "~/Notes/notebook/work.org" "Tasks")
-           "* TODO %?\n%U")
+           "* TODO %?\n")
           ("s" "Note for next sprint" entry (file+headline "~/Notes/notebook/work.org" "Sprint planning")
            "* %?\n")
           ("r" "Read Later" entry (file+headline "~/Notes/notebook/read_later.org" "Read Later")
