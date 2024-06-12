@@ -106,10 +106,10 @@ dotspacemacs-configuration-layers
            )
           )
         org-refile-targets
-        '(("/home/endi/Notes/notebook/journal.org" :maxlevel . 1)
-          ("/home/endi/Notes/notebook/work.org" :maxlevel . 1)
-          ("/home/endi/Notes/notebook/archive.org" :maxlevel . 1)
-          ("/home/endi/Notes/notebook/bookmarks.org" :maxlevel . 1))
+        '(("/Users/endi/Notes/notebook/journal.org" :maxlevel . 1)
+          ("/Users/endi/Notes/notebook/work.org" :maxlevel . 1)
+          ("/Users/endi/Notes/notebook/archive.org" :maxlevel . 1)
+          ("/Users/endi/Notes/notebook/bookmarks.org" :maxlevel . 1))
         org-priority-faces
         '((?A :foreground "#ff6c6b" :weight bold)
           (?B :foreground "#98be65" :weight bold)
