@@ -72,7 +72,7 @@ dotspacemacs-configuration-layers
         org-enable-roam-ui t
         org-roam-directory "~/Notes/org-roam"
         org-todo-keywords '((sequence "TODO" "ONHOLD" "|" "DONE" "CANCELLED"))
-        org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org" "~/Notes/org-roam/20240107015412-history_of_christianity_in_albania_project.org" "~/Notes/notebook/read_later.org")
+        org-agenda-files '("~/Notes/notebook/journal.org" "~/Notes/notebook/work.org")
         org-agenda-todo-ignore-with-date t
         org-projectile-file "project.org"
         org-agenda-todo-ignore-scheduled 'all
@@ -109,7 +109,8 @@ dotspacemacs-configuration-layers
         '(("/Users/endi/Notes/notebook/journal.org" :maxlevel . 1)
           ("/Users/endi/Notes/notebook/work.org" :maxlevel . 1)
           ("/Users/endi/Notes/notebook/archive.org" :maxlevel . 1)
-          ("/Users/endi/Notes/notebook/bookmarks.org" :maxlevel . 1))
+          ("/Users/endi/Notes/notebook/bookmarks.org" :maxlevel . 1)
+          ("/Users/endi/Notes/notebook/week.org" :maxlevel . 2))
         org-priority-faces
         '((?A :foreground "#ff6c6b" :weight bold)
           (?B :foreground "#98be65" :weight bold)
