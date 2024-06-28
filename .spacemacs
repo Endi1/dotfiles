@@ -153,13 +153,17 @@ dotspacemacs-configuration-layers
                                     bufler
                                     one
                                     emojify
-                                    telega
                                     smudge
                                     ormolu
                                     org-web-tools
                                     ruff-format
                                     hide-mode-line
                                     exec-path-from-shell
+                                    (use-package treesit-jump
+                                      :straight (:host github :repo "dmille56/treesit-jump" :files ("*.el" "treesit-queries"))
+                                      :config
+                                      ;; Optional: add some queries to filter out of results (since they can be too cluttered sometimes)
+                                      (setq treesit-jump-queries-filter-list '("inner" "test" "param")))
 )
 
  ;; A list of packages that cannot be updated.
@@ -683,18 +687,15 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "u") #'vundo)
   (define-key evil-normal-state-map (kbd "SPC w j") #'webjump)
   (setq evil-undo-system 'undo-redo)
-  (setq telega-use-docker t)
-  (add-hook 'telega-load-hook 'telega-mode-line-mode)
-  (add-hook 'telega-load-hook 'telega-notifications-mode)
-  (add-hook 'telega-mode-hook 'emojify-mode)
   (add-hook 'haskell-mode-hook 'ormolu-format-on-save-mode)
   (evil-set-undo-system 'undo-redo)
   (add-hook 'prog-mode-hook 'indent-bars-mode)
   (fringe-mode)
   (org-roam-db-autosync-mode t)
-  (add-hook 'python-mode-hook #'flymake-ruff-load)
-  (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
-  (add-hook 'python-mode-hook 'lsp-mode)
+  (add-hook 'python-mode-hook #'python-ts-mode)
+  (add-hook 'python-ts-mode-hook #'flymake-ruff-load)
+  (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
+  (add-hook 'python-ts-mode-hook 'lsp)
   (add-hook 'vterm-mode-hook #'hide-mode-line-mode)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
