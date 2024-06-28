@@ -159,11 +159,6 @@ dotspacemacs-configuration-layers
                                     ruff-format
                                     hide-mode-line
                                     exec-path-from-shell
-                                    (use-package treesit-jump
-                                      :straight (:host github :repo "dmille56/treesit-jump" :files ("*.el" "treesit-queries"))
-                                      :config
-                                      ;; Optional: add some queries to filter out of results (since they can be too cluttered sometimes)
-                                      (setq treesit-jump-queries-filter-list '("inner" "test" "param")))
 )
 
  ;; A list of packages that cannot be updated.
