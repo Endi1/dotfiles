@@ -139,7 +139,6 @@ dotspacemacs-configuration-layers
  dotspacemacs-additional-packages '(
                                     evil-surround
 
-                                    flymake-ruff
                                     (indent-bars :location (recipe
                                                             :fetcher github
                                                             :repo "jdtsmith/indent-bars"))
@@ -153,12 +152,12 @@ dotspacemacs-configuration-layers
                                     bufler
                                     one
                                     emojify
-                                    smudge
                                     ormolu
                                     org-web-tools
                                     ruff-format
                                     hide-mode-line
                                     exec-path-from-shell
+                                    lazy-ruff
 )
 
  ;; A list of packages that cannot be updated.
@@ -667,9 +666,9 @@ before packages are loaded."
         (org-projectile-todo-files)))
 
   (spacious-padding-mode)
-  (golden-ratio-mode)
   (vertico-posframe-mode)
   (global-goto-address-mode)
+  (lazy-ruff-global-mode)
   (define-key evil-normal-state-map (kbd "SPC b b") #'bufler-switch-buffer)
   (define-key evil-normal-state-map (kbd "SPC o f") #'org-ql-find-in-agenda)
   (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
@@ -688,7 +687,6 @@ before packages are loaded."
   (fringe-mode)
   (org-roam-db-autosync-mode t)
   (add-hook 'python-mode-hook #'python-ts-mode)
-  (add-hook 'python-ts-mode-hook #'flymake-ruff-load)
   (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
   (add-hook 'python-ts-mode-hook 'lsp)
   (add-hook 'vterm-mode-hook #'hide-mode-line-mode)
@@ -710,7 +708,7 @@ This function is called at the very end of Spacemacs initialization."
  '(exec-path
    '("/opt/homebrew/bin" "/opt/homebrew/sbin" "/usr/local/bin" "/System/Cryptexes/App/usr/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin" "/Applications/Emacs.app/Contents/MacOS/bin-arm64-11" "/Applications/Emacs.app/Contents/MacOS/libexec-arm64-11" "/Users/endi/.cargo/bin" "/Users/endi/.local/bin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Users/endi/.ghcup/bin"))
  '(package-selected-packages
-   '(exec-path-from-shell bui hide-mode-line code-review difftastic company-lua lua-mode counsel-gtags counsel swiper ivy ggtags rust-mode dap-mode lsp-docker yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toml-mode toc-org terminal-here term-cursor telega tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smudge smeargle slim-mode shell-pop scss-mode sass-mode ruff-format ron-mode restclient restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-web-tools org-superstar org-roam-ui org-rich-yank org-ql org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nov nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line mastodon markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flymake-ruff flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emojify emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode copilot consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
+   '(dirvish lazy-ruff exec-path-from-shell bui hide-mode-line code-review difftastic company-lua lua-mode counsel-gtags counsel swiper ivy ggtags rust-mode dap-mode lsp-docker yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toml-mode toc-org terminal-here term-cursor telega tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smudge smeargle slim-mode shell-pop scss-mode sass-mode ruff-format ron-mode restclient restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-web-tools org-superstar org-roam-ui org-rich-yank org-ql org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nov nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line mastodon markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flymake-ruff flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emojify emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode copilot consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -727,7 +725,11 @@ This function is called at the very end of Spacemacs initialization."
  '(mode-line-inactive ((t :box (:line-width 6 :color "#252534" :style nil))))
  '(tab-bar-tab ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
  '(tab-bar-tab-inactive ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
- '(window-divider ((t :background "#1a1a25" :foreground "#1a1a25")))
- '(window-divider-first-pixel ((t :background "#1a1a25" :foreground "#1a1a25")))
- '(window-divider-last-pixel ((t :background "#1a1a25" :foreground "#1a1a25"))))
+ '(tab-line-tab ((t)))
+ '(tab-line-tab-active ((t)))
+ '(tab-line-tab-inactive ((t)))
+ '(vertical-border ((t :background "#1a1a25" :foreground "#1a1a25")))
+ '(window-divider ((t (:background "#1a1a25" :foreground "#1a1a25"))))
+ '(window-divider-first-pixel ((t (:background "#1a1a25" :foreground "#1a1a25"))))
+ '(window-divider-last-pixel ((t (:background "#1a1a25" :foreground "#1a1a25")))))
 )
