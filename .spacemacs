@@ -157,7 +157,6 @@ dotspacemacs-configuration-layers
                                     ruff-format
                                     hide-mode-line
                                     exec-path-from-shell
-                                    lazy-ruff
                                     browse-kill-ring
 )
 
@@ -670,7 +669,6 @@ before packages are loaded."
   (spacious-padding-mode)
   (vertico-posframe-mode)
   (global-goto-address-mode)
-  (lazy-ruff-global-mode)
   (define-key evil-normal-state-map (kbd "SPC b b") #'bufler-switch-buffer)
   (define-key evil-normal-state-map (kbd "SPC o f") #'org-ql-find-in-agenda)
   (define-key evil-normal-state-map (kbd "gx") #'goto-address-at-point)
