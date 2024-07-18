@@ -158,6 +158,7 @@ dotspacemacs-configuration-layers
                                     hide-mode-line
                                     exec-path-from-shell
                                     browse-kill-ring
+                                    poetry
 )
 
  ;; A list of packages that cannot be updated.
