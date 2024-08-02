@@ -708,7 +708,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("9cd57dd6d61cdf4f6aef3102c4cc2cfc04f5884d4f40b2c90a866c9b6267f2b3" "d19f00fe59f122656f096abbc97f5ba70d489ff731d9fa9437bac2622aaa8b89" "9fb561389e5ac5b9ead13a24fb4c2a3544910f67f12cfcfe77b75f36248017d0" "dcb1cc804b9adca583e4e65755895ba0a66ef82d29464cf89a78b88ddac6ca53" default))
+   '("b95f61aa5f8a54d494a219fcde9049e23e3396459a224631e1719effcb981dbd" "74e2ed63173b47d6dc9a82a9a8a6a9048d89760df18bc7033c5f91ff4d083e37" "9cd57dd6d61cdf4f6aef3102c4cc2cfc04f5884d4f40b2c90a866c9b6267f2b3" "d19f00fe59f122656f096abbc97f5ba70d489ff731d9fa9437bac2622aaa8b89" "9fb561389e5ac5b9ead13a24fb4c2a3544910f67f12cfcfe77b75f36248017d0" "dcb1cc804b9adca583e4e65755895ba0a66ef82d29464cf89a78b88ddac6ca53" default))
  '(exec-path
    '("/opt/homebrew/bin" "/opt/homebrew/sbin" "/usr/local/bin" "/System/Cryptexes/App/usr/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin" "/Applications/Emacs.app/Contents/MacOS/bin-arm64-11" "/Applications/Emacs.app/Contents/MacOS/libexec-arm64-11" "/Users/endi/.cargo/bin" "/Users/endi/.local/bin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Users/endi/.ghcup/bin"))
  '(package-selected-packages
@@ -718,22 +718,22 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fringe ((t :background "#313131")))
- '(header-line ((t :box (:line-width 4 :color "#202020" :style nil))))
- '(header-line-highlight ((t :box (:color "#DCDCCC"))))
+ '(fringe ((t :background "#2B1D2B")))
+ '(header-line ((t :box (:line-width 4 :color "#2B1D2B" :style nil))))
+ '(header-line-highlight ((t :box (:color "#F0EBE7"))))
  '(keycast-key ((t)))
- '(line-number ((t :background "#313131")))
- '(mode-line ((t :box (:line-width 6 :color "#202020" :style nil))))
- '(mode-line-active ((t :box (:line-width 6 :color "#202020" :style nil))))
- '(mode-line-highlight ((t :box (:color "#DCDCCC"))))
- '(mode-line-inactive ((t :box (:line-width 6 :color "#2D2D2D" :style nil))))
- '(tab-bar-tab ((t :box (:line-width 4 :color "grey85" :style nil))))
- '(tab-bar-tab-inactive ((t :box (:line-width 4 :color "grey75" :style nil))))
+ '(line-number ((t :background "#2B1D2B")))
+ '(mode-line ((t :box (:line-width 6 :color "#332433" :style nil))))
+ '(mode-line-active ((t :box (:line-width 6 :color "#332433" :style nil))))
+ '(mode-line-highlight ((t :box (:color "#F0EBE7"))))
+ '(mode-line-inactive ((t :box (:line-width 6 :color "#332433" :style nil))))
+ '(tab-bar-tab ((t :box (:line-width 4 :color "#2B1D2B" :style nil))))
+ '(tab-bar-tab-inactive ((t :box (:line-width 4 :color "#2B1D2B" :style nil))))
  '(tab-line-tab ((t)))
  '(tab-line-tab-active ((t)))
  '(tab-line-tab-inactive ((t)))
- '(vertical-border ((t :background "#313131" :foreground "#313131")))
- '(window-divider ((t (:background "#313131" :foreground "#313131"))))
- '(window-divider-first-pixel ((t (:background "#313131" :foreground "#313131"))))
- '(window-divider-last-pixel ((t (:background "#313131" :foreground "#313131")))))
+ '(vertical-border ((t :background "#2B1D2B" :foreground "#2B1D2B")))
+ '(window-divider ((t (:background "#2B1D2B" :foreground "#2B1D2B"))))
+ '(window-divider-first-pixel ((t (:background "#2B1D2B" :foreground "#2B1D2B"))))
+ '(window-divider-last-pixel ((t (:background "#2B1D2B" :foreground "#2B1D2B")))))
 )
