@@ -46,6 +46,7 @@ dotspacemacs-configuration-layers
   multiple-cursors
   docker
   treemacs
+  sql
 
 ;; List of configuration layers to load.
    (tree-sitter :variables
@@ -693,7 +694,7 @@ before packages are loaded."
   (add-hook 'vterm-mode-hook #'hide-mode-line-mode)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
-  (lsp-headerline-breadcrumb-mode f)
+  (add-hook 'lsp-mode-hook #'lsp-headerline-breadcrumb-mode)
 
 
   )
