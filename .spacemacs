@@ -694,7 +694,6 @@ before packages are loaded."
   (add-hook 'vterm-mode-hook #'hide-mode-line-mode)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
-  (add-hook 'lsp-mode-hook #'lsp-headerline-breadcrumb-mode)
 
 
   )
