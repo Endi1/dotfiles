@@ -118,14 +118,17 @@ dotspacemacs-configuration-layers
           (?C :foreground "#c678dd" :weight bold))
         org-agenda-block-separator 8411
    )
+
    (version-control :variables
                     version-control-diff-tool 'git-gutter+
                     version-control-diff-side 'left
                     version-control-global-margin t)
+
    (auto-completion :variables
                     auto-completion-idle-delay 0.0
                     auto-completion-enable-snippets-in-popup t
                     auto-completion-enable-help-tooltip t)
+
    )
 
 
@@ -144,22 +147,17 @@ dotspacemacs-configuration-layers
                                                             :fetcher github
                                                             :repo "jdtsmith/indent-bars"))
                                     vundo
-                                    restclient
                                     vertico-posframe
                                     spacious-padding
                                     kaolin-themes
                                     mood-line
-                                    org-ql
                                     bufler
                                     one
-                                    emojify
                                     ormolu
-                                    org-web-tools
                                     ruff-format
                                     hide-mode-line
                                     exec-path-from-shell
                                     browse-kill-ring
-                                    poetry
 )
 
  ;; A list of packages that cannot be updated.
@@ -332,7 +330,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(kaolin-eclipse)
+   dotspacemacs-themes '(kaolin-ocean)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -711,7 +709,7 @@ This function is called at the very end of Spacemacs initialization."
  '(exec-path
    '("/opt/homebrew/bin" "/opt/homebrew/sbin" "/usr/local/bin" "/System/Cryptexes/App/usr/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin" "/Applications/Emacs.app/Contents/MacOS/bin-arm64-11" "/Applications/Emacs.app/Contents/MacOS/libexec-arm64-11" "/Users/endi/.cargo/bin" "/Users/endi/.local/bin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Users/endi/.ghcup/bin"))
  '(package-selected-packages
-   '(hc-zenburn-theme zenburn-theme dired-preview dracula-theme dune flycheck-ocaml merlin-company merlin-eldoc merlin-iedit merlin ocamlformat ocp-indent utop tuareg caml browse-kill-ring lazy-ruff exec-path-from-shell bui hide-mode-line code-review difftastic company-lua lua-mode counsel-gtags counsel swiper ivy ggtags rust-mode dap-mode lsp-docker yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toml-mode toc-org terminal-here term-cursor telega tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smudge smeargle slim-mode shell-pop scss-mode sass-mode ruff-format ron-mode restclient restart-emacs rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-web-tools org-superstar org-roam-ui org-rich-yank org-ql org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nov nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line mastodon markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flymake-ruff flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emojify emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode csv-mode copilot consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
+   '(dap-mode lsp-docker bui yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toc-org terminal-here term-cursor tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smeargle slim-mode shell-pop scss-mode sass-mode ruff-format restart-emacs request rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-superstar org-roam-ui org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-mode-line hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies editorconfig dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-kill-ring browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
