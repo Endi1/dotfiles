@@ -25,15 +25,9 @@
    dotspacemacs-configuration-layer-path '()
 
 dotspacemacs-configuration-layers
-'(lua
-  rust
-  ocaml
+'(
   sql
   html
-  multiple-cursors
-  csv
-  ;; rust
-  epub
   evil-commentary
   spacemacs-editing
   better-defaults
@@ -45,30 +39,35 @@ dotspacemacs-configuration-layers
   pdf
   multiple-cursors
   docker
-  treemacs
   sql
 
-;; List of configuration layers to load.
    (tree-sitter :variables
                 tree-sitter-syntax-enable t)
+
    (shell :variables
           shell-default-shell 'multi-vterm
           shell-default-position 'bottom
           shell-default-width 50
           multi-term-program "/bin/zsh")
+
    (haskell
     :variables
     haskell-enable-hindent-style "johan-tibell")
+
    (yaml :variables yaml-enable-lsp t)
+
    (javascript :variables javascript-backend 'lsp)
+
    (python :variables
            python-format-on-save t)
+
    (typescript :variables
            typescript-fmt-tool 'prettier
            typescript-fmt-on-save t)
-   (vue :variables vue-backend 'lsp)
+
    (elfeed :variables
            rmh-elfeed-org-files (list "~/Notes/elfeed.org"))
+
    (org :variables
         org-enable-roam-support t
         org-enable-roam-ui t
