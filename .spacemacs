@@ -339,7 +339,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(doom :separator wave)
+   ;; dotspacemacs-mode-line-theme '(doom :separator wave)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -652,18 +652,20 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-(exec-path-from-shell-initialize)
-(with-eval-after-load 'company
+  (exec-path-from-shell-initialize)
+  (with-eval-after-load 'company
     ;; disable inline previews
-  ;; (golden-ratio-mode)
-  (delq 'company-preview-if-just-one-frontend company-frontends))
+    ;; (golden-ratio-mode)
+    (delq 'company-preview-if-just-one-frontend company-frontends))
 
-(with-eval-after-load 'org-agenda
-  (require 'org-projectile)
-  (mapcar '(lambda (file)
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (mapcar '(lambda (file)
                (when (file-exists-p file)
                  (push file org-agenda-files)))
-        (org-projectile-todo-files)))
+            (org-projectile-todo-files)))
+
+  
 
   (spacious-padding-mode)
   (vertico-posframe-mode)
@@ -691,8 +693,8 @@ before packages are loaded."
   (add-hook 'vterm-mode-hook #'hide-mode-line-mode)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
-
-
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (global-hide-mode-line-mode)
   )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
@@ -709,28 +711,28 @@ This function is called at the very end of Spacemacs initialization."
  '(exec-path
    '("/opt/homebrew/bin" "/opt/homebrew/sbin" "/usr/local/bin" "/System/Cryptexes/App/usr/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin" "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin" "/Applications/Emacs.app/Contents/MacOS/bin-arm64-11" "/Applications/Emacs.app/Contents/MacOS/libexec-arm64-11" "/Users/endi/.cargo/bin" "/Users/endi/.local/bin" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Users/endi/.ghcup/bin"))
  '(package-selected-packages
-   '(dap-mode lsp-docker bui yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toc-org terminal-here term-cursor tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smeargle slim-mode shell-pop scss-mode sass-mode ruff-format restart-emacs request rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-superstar org-roam-ui org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-mode-line hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies editorconfig dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-kill-ring browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
+   '(lambda-line dap-mode lsp-docker bui yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode winum window-purpose which-key wgrep web-mode web-beautify vundo volatile-highlights vim-powerline vi-tilde-fringe vertico-posframe uuidgen unfill undo-tree typescript-mode treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil tree-sitter-langs toc-org terminal-here term-cursor tagedit symon symbol-overlay string-inflection string-edit-at-point sql-indent sphinx-doc spacious-padding spacemacs-whitespace-cleanup spacemacs-purpose-popwin spaceline space-doc smeargle slim-mode shell-pop scss-mode sass-mode ruff-format restart-emacs request rainbow-delimiters quickrun pytest pylookup pyenv-mode pydoc py-isort pug-mode prettier-js poetry pippel pipenv pip-requirements pdf-view-restore pcre2el password-generator paradox overseer ormolu orgit-forge org-superstar org-roam-ui org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-contrib org-cliplink orderless open-junk-file one npm-mode nose nodejs-repl nameless mwim multi-vterm multi-term multi-line mood-line markdown-toc marginalia macrostep lsp-ui lsp-treemacs lsp-python-ms lsp-pyright lsp-origami lsp-haskell lorem-ipsum livid-mode live-py-mode kaolin-themes json-reformat json-navigator json-mode js2-refactor js-doc inspector info+ indent-guide indent-bars importmagic impatient-mode hybrid-mode hungry-delete holy-mode hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-mode-line hide-comnt haskell-snippets google-translate golden-ratio gnuplot gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter-fringe+ gh-md flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-evilified-state evil-escape evil-easymotion evil-commentary evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emmet-mode embark-consult elisp-slime-nav elisp-def elfeed-org elfeed-goodies editorconfig dumb-jump drag-stuff dotenv-mode doom-modeline dockerfile-mode docker dired-quick-sort diminish devdocs define-word dante cython-mode consult-yasnippet consult-lsp compleseus-spacemacs-help company-web company-quickhelp company-cabal company-anaconda column-enforce-mode code-cells cmm-mode clean-aindent-mode centered-cursor-mode bufler browse-kill-ring browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap all-the-icons aggressive-indent ace-link)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fringe ((t :background "#1a1a25")))
- '(header-line ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
- '(header-line-highlight ((t :box (:color "#e6e6e8"))))
+ '(fringe ((t :background "#18181B")))
+ '(header-line ((t :box (:line-width 4 :color "#1e2528" :style nil))))
+ '(header-line-highlight ((t :box (:color "#e4e4e8"))))
  '(keycast-key ((t)))
- '(line-number ((t :background "#1a1a25")))
- '(mode-line ((t :box (:line-width 6 :color "#252534" :style nil))))
- '(mode-line-active ((t :box (:line-width 6 :color "#252534" :style nil))))
- '(mode-line-highlight ((t :box (:color "#e6e6e8"))))
- '(mode-line-inactive ((t :box (:line-width 6 :color "#252534" :style nil))))
- '(tab-bar-tab ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
- '(tab-bar-tab-inactive ((t :box (:line-width 4 :color "#1a1a25" :style nil))))
+ '(line-number ((t :background "#18181B")))
+ '(mode-line ((t :box (:line-width 6 :color "#222225" :style nil))))
+ '(mode-line-active ((t :box (:line-width 6 :color "#222225" :style nil))))
+ '(mode-line-highlight ((t :box (:color "#e4e4e8"))))
+ '(mode-line-inactive ((t :box (:line-width 6 :color "#222225" :style nil))))
+ '(tab-bar-tab ((t :box (:line-width 4 :color "#18181B" :style nil))))
+ '(tab-bar-tab-inactive ((t :box (:line-width 4 :color "#18181B" :style nil))))
  '(tab-line-tab ((t)))
  '(tab-line-tab-active ((t)))
  '(tab-line-tab-inactive ((t)))
- '(vertical-border ((t :background "#1a1a25" :foreground "#1a1a25")))
- '(window-divider ((t (:background "#1a1a25" :foreground "#1a1a25"))))
- '(window-divider-first-pixel ((t (:background "#1a1a25" :foreground "#1a1a25"))))
- '(window-divider-last-pixel ((t (:background "#1a1a25" :foreground "#1a1a25")))))
+ '(vertical-border ((t :background "#18181B" :foreground "#18181B")))
+ '(window-divider ((t (:background "#18181B" :foreground "#18181B"))))
+ '(window-divider-first-pixel ((t (:background "#18181B" :foreground "#18181B"))))
+ '(window-divider-last-pixel ((t (:background "#18181B" :foreground "#18181B")))))
 )
